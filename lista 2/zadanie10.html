@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 10</title>
+    <style>
+        input{
+          width: 30px;
+        }
+    </style>
+</head>
+<body>
+    
+  <input>x<sup>2</sup>+<input>x+<input>=0<hr>
+  <button onclick="solve()">Rozwiaz</button>
+  <div></div>
+  
+  <script>
+    function solve(){
+      let inp=document.getElementsByTagName("input");
+      let a=inp[0].value, b=inp[1].value, c=inp[2].value;
+      let delta=b*b-4*a*c;
+      
+      if(delta>0)
+      {
+        let x1=(-b-Math.sqrt(delta))/(2*a);
+        let x2=(-b+Math.sqrt(delta))/(2*a);
+        document.getElementsByTagName("div")[0].innerHTML = "x1="+x1+"<br>x2="+x2;
+      }
+      if(delta==0)
+      {
+        let x0=(-b/(2*a));
+        document.getElementsByTagName("div")[0].innerHTML= "x0="+x0;
+      }
+      if(delta<0)
+      {
+        document.getElementsByTagName("div")[0].innerHTML= "Brak rozwiązań";
+      }
+    
+    }
+  </script>
+
+  <p>20 linia: przypisanie do tablicy tagów input</p> 
+  <p>21 linia: przypisanie zmiennym a, b, c kolejnych wartości z tablicy inp </p>
+  <p>22 linia: obliczenie delty funkcji kwadratowej i przypisanie jej do zmienej delta</p>
+  <p>24 linia: if sprawdza czy telta jest większa od zera</p>
+  <p>26,27 linia: przypisanie zmiennym x1, x2 obliczonych miejsc zerowych</p>
+  <p>28 linia: wpisanie do 1 diva na stronie wyników x1, x2</p>
+  <p>30 linia: if sprawdza czy delta jest równa 0</p>
+  <p>32 linia: obliczenie jedynego miejsca zerowego i przypisanie go do zmiennej x0</p>
+  <p>33 linia: wpisanie do 1 diva na stronie wyniku x0</p>
+  <p>35 linia: if sprawdza czy delta jest mniejsza od 0</p>
+  <p>37 linia: wpisanie do 1 diva na stronie że brak rozwiązań dla wprowadzonych współczyników funkcji kwadratowej</p>
+
+</body>
+</html>

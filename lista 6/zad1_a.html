@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <title>Zadanie 1 A</title>
+</head>
+<body>
+    <svg width="800" height="800">
+        <defs>
+            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+            </linearGradient>
+            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color:rgb(0, 255, 255);stop-opacity:1" />
+                <stop offset="100%" style="stop-color:rgb(206, 56, 168);stop-opacity:1" />
+            </linearGradient>
+            <radialGradient id="grad3" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                <stop offset="0%" style="stop-color:rgb(235, 34, 7); stop-opacity:0" />
+                <stop offset="100%" style="stop-color:rgb(0, 255, 255); stop-opacity:1" />
+            </radialGradient>  
+            <radialGradient id="grad4" cx="50%" cy="40%" r="50%" fx="50%" fy="50%">
+                <stop offset="0%" style="stop-color:rgb(36, 209, 21); stop-opacity:0" />
+                <stop offset="100%" style="stop-color:rgb(20, 94, 94); stop-opacity:1" />
+            </radialGradient>
+            <pattern id="star" viewBox="0,0,10,10" width="10%" height="10%">
+                <polygon points="0,0 2,5 0,10 5,8 10,10 8,5 10,0 5,2"/>
+            </pattern>
+        </defs>
+        
+        <rect x="500" y="120" width="100" height="100" fill="url(#grad1)" stroke="red" stroke-width="4"/>
+        <circle cx="300" cy="200" r="50" fill="url(#grad2)"/>
+        <polygon points="50,300 200,300 50,500" fill="url(#star)"/>
+        <ellipse cx="400" cy="500" rx="200" ry="50" style="fill: url(#grad3); stroke:purple; stroke-width:2" />
+        <polygon points="148,183.138438763306 52,183.138438763306 4,100 52,16.8615612366939 148,16.8615612366939 196,100" style="fill:url(#grad4);stroke:#aa3636;stroke-width:8px" />
+    </svg>
+</body>
+</html>

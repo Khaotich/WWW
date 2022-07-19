@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Zadanie 13</title> 
+    <style>
+      
+      body {text-align:center}
+      img{
+        vertical-align:middle;
+        height: 400px;
+        }  
+    
+    </style>
+</head>
+<body>
+    
+  <button onclick="f(-1)"> << </button>
+  <img src="img/a0.jpg">
+  <button onclick="f(1)"> >> </button>
+  <script>
+    var i=0;
+    var img=document.getElementsByTagName("img")[0];
+    function f(x){
+      i=i+x;
+      if(i>-1 && i<10)
+      {
+        img.src="img/a"+i+".jpg";
+      }
+      else if(i<0)
+      {
+        i=9;
+        img.src="img/a"+i+".jpg";
+      }
+      else if(i==10)
+      {
+        i=0;
+        img.src="img/a"+i+".jpg";
+      }
+    }
+  </script>
+
+</body>
+</html>

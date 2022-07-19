@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Zadanie 2 A</title> 
+    <style>
+      h1{
+           text-align: center; 
+        }
+    </style>
+</head>
+<body>
+  
+    <h1></h1>
+
+    <script>
+
+        function time()
+        {
+            var data = new Date();
+            var godzina = data.getHours();
+            var minuta = data.getMinutes();
+            var sekunda = data.getSeconds();
+            var sg,sm,ss;
+            
+            if(godzina<10) sg = '0' + godzina;
+            else sg = godzina;
+            if(minuta<10) sm = '0' + minuta;
+            else sm = minuta;
+            if(sekunda<10) ss = '0' + sekunda;
+            else  ss = sekunda;
+            
+            document.getElementsByTagName('h1')[0].innerText = sg + ':' + sm + ':' + ss;  
+        }
+        setInterval (time,1000);
+    </script>
+
+</body>
+</html>

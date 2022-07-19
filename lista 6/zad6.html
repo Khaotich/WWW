@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 6</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+        img {width: 60px; height: 60px; background-color: black; position: absolute; top: 0; left: 0; margin: 2px;}
+        button {display: block; margin-left: auto; margin-right: auto;}
+        #ramka {height: 800px; width: 800px; border: 4px solid black; position: relative; margin-left: auto; margin-right: auto; margin-top: 20px;}
+        #wynik {float: left; height: 180px; width: 200px; text-align: center; border: 4px solid black;}
+    </style>
+</head>
+<body>
+
+    <button id="start">Start</button>
+    <div>
+        <div id="wynik">
+            <h1>Wynik</h1>
+            <p> Czas do końca: 60</p>
+            <p> Zdobyte punkty: 0</p>
+        </div>
+        <div id="ramka"></div>
+    </div>
+
+    <script>
+
+        var count, resize_v, spawn_v, score_v;
+        var stop = 0;
+        var punkty = 0;
+
+        //main
+        $('#start').click(function()
+        {
+            stop++;
+            if(stop==1)
+            {
+                for(i=0; i<5; i++) spawn();
+
+                resize_v = setInterval(resize,1000);
+                spawn_v = setInterval(spawn,1000);
+                score_v = setInterval(score, 1);
+
+                count = 60, timer = setInterval(function()
+                {
+                    count--;
+                    if(count == 0)
+                    {
+                        clearInterval(timer);
+                        end();
+                    }    
+                }, 1000);
+            }
+        })
+
+        function spawn()
+        {
+            var left = Math.floor(Math.random()*730)+1;
+            var top = Math.floor(Math.random()*730)+1;
+
+            $('<img src="kloc.png">').css({left: left, top: top}).appendTo('#ramka')
+        }
+
+        function end()
+        {
+            clearInterval(resize_v);
+            clearInterval(spawn_v);
+            clearInterval(score_v);
+            $('#ramka').html('');
+
+            var replay = confirm("Gra zakończona, chcesz zagrać jeszcze raz?")
+            if(replay)
+            {
+                window.location.reload(true);
+            }
+        }
+
+        function resize()
+        {
+            $('div#ramka img').each(function()
+            {
+                if($(this).width()==0 && $(this).height()==0) $(this).remove();
+                else
+                {
+                    $(this).width($(this).width()-12);
+                    $(this).height($(this).height()-12);
+                }
+            });
+        }
+
+        $(document).on('click','#ramka img',function()
+        {
+            $(this).remove();
+            punkty ++
+        });
+
+        function score()
+        {
+            $('#wynik').html('<h1>Wynik</h1><p> Czas do końca: '+ count +'</p><p> Zdobyte punkty: ' + punkty + '</p>');
+        }
+
+    </script>
+
+</body>
+</html>

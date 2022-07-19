@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 9</title>
+    <style>
+        body{
+          background-color: chartreuse;
+        }
+        #wynik{
+            width: 90%;
+            height: 100%;
+            border: 3px solid black;
+            padding: 20px;
+            margin: 20px;
+            font-weight: bold;
+            background-color: aquamarine;
+        }
+    </style>
+</head>
+<body>
+    
+  <input onchange="document.getElementById('wynik').innerHTML+='<br>'+this.value+'='+eval(this.value)">
+  <button onclick="location=location">Wyczysc</button>
+  
+  <p>Kalkulator działa na zasadzie przechwytywania tekstu, który po tym jest obliczany i wpisywany po =.
+     Tekst wpisywany jest dopisywany poniżej kalkulatora, gdzie pierwsza część to nasz wpisany tekst po czym
+     znak "=" i po nim wynik wpisanego działania.
+  </p> 
+
+  
+  <div id="wynik">
+    <p>Wyniki działań:</p>
+  </div>
+
+</body>
+</html>

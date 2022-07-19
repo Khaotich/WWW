@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <title>Zadanie 7</title>
+    <style>
+        h1 {
+            text-align: center
+        }
+
+        nav {
+            width: auto;
+            margin: auto
+        }
+
+        #hanoi {
+            height: 500px;
+            width: 800px;
+            margin: auto;
+            border: 1px solid grey;
+        }
+
+        #hanoi > div {
+            height: 500px;
+            width: 330px;
+            border: 1px solid green;
+            vertical-align: bottom;
+            display: table-cell;
+            position: relative;
+        }
+
+        #hanoi .a, .b, .c {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        .ui-state-highlight {
+            background-color: #d3d3d3
+        }
+
+        .k {
+            background: yellow;
+            border: 1px solid grey;
+            height: 50px;
+            margin: auto;
+            border-radius: 25px;
+            position: relative;
+        }
+
+        .k.cur {
+            background: green
+        }
+
+        * {
+            font-family: Sans;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Hanoi</h1>
+
+    <center>Przenieś wieżę do prawej klatki</center><br>
+
+    <div id='hanoi'>
+        <div id='a'></div>
+        <div id='b'></div>
+        <div id='c'></div>
+    </div>
+
+    <script>
+        var cur;
+        var i;
+
+        for (i = 2; i < 10; i++)
+            $("#a").append("<div id='" + i + "' class='k' style='width:" + i + "0%'></div>");
+
+        $('.k').draggable({
+            drag: function (event, ui) {
+                $(".cur").removeClass('cur');
+                cur = this;
+                $(this).addClass('cur');
+            }
+        });
+
+        $('#a, #b, #c').droppable({
+            drop: function (event, ui) {
+
+                var from = $(cur).attr("id");
+                cur.style.left = '0px';
+                cur.style.top = '0px';
+                var to = $(this).children(":first").attr("id");
+                var from = $(cur).attr("id");
+
+                if ($(cur).is(":first-child"))
+                    if (to == undefined || to > from)
+                        $(this).prepend(cur);
+            }
+        });
+
+    </script>
+
+</body>
+</html>

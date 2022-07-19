@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 5</title>
+    <style>
+        p:nth-of-type(5n){
+            color: yellow;
+            background-color: black;
+        }
+    </style>
+</head>
+<body>
+    
+    <script>
+        var liczby = ['uno','due','tre','quattro','cinque','sei','sette','otto','nove','dieci','undici','dodici','tredici','quattordici','quindici'];
+        
+        for(i=0; i<15; i++){
+            document.getElementsByTagName('body')[0].innerHTML += '<p>' + liczby[i] + '</p>'; 
+        }
+
+        function reset(){
+            for(i=4;i<=14;i+=5){
+                document.getElementsByTagName('p')[i].style = 'color: black; background-color: white;';
+            }
+        }
+
+        function co_trzeci(){
+            for(i=2;i<=14;i+=3){
+                document.getElementsByTagName('p')[i].style = 'color: blue; background-color: pink;';
+            }
+        }
+
+        function od_konca(){
+            var paragrafy = document.getElementsByTagName('p').length
+            document.getElementsByTagName('body')[0].innerHTML += '<p>' + document.getElementsByTagName('p')[par-15].innerText + '</p>';
+        }
+
+        function paragraf(){
+            var paragrafy = document.querySelectorAll('p');
+            document.getElementsByTagName('body')[0].innerHTML += '<p>' + (paragrafy.length + 1) + '</p>';
+        }
+
+    </script>
+
+    <button onclick="reset()">OK</button>
+    <button onclick="co_trzeci()">Co trzeci</button>
+    <button onclick="od_konca()">15 od końca</button>
+    <button onclick="paragraf()">Dodaj paragraf</button>
+
+</body>

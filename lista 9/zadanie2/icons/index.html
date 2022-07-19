@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pl">
+    <head>
+        <meta charset="utf-8">
+        <title>OX</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <style>
+            div {font-size:10px; text-align:center}
+            #plansza {
+               width:400px;
+               height:400px;
+               border: 1px solid red;
+               margin:10px auto;
+               position:relative
+            }
+            #plansza >div {   
+               width:5%;
+               height:5%;
+               box-sizing:border-box;
+               float:left;
+               border:1px solid #aaa;
+               text-align:center;
+               font-size:16px;
+            }
+            h1 { text-align:center }
+            button.active {font-weight:bold;color:red;font-size:24px}
+            body{text-align: center;}
+        </style>
+    </head>
+
+<body>
+
+    <h1>Kółko i krzyżyk <b></b></h1>
+    <nav></nav>
+
+    <div id='plansza'></div>
+    <div id='info'></div>
+
+    <button class="ee" id='rest' onclick="restart=2;send();restart=0;">RESET</button>
+    <button class="ee" onclick="znak='X';send(); console.log(znak)">X</button>
+    <button class="ee" onclick="znak='a';send()">a</button>
+    <button class="ee" onclick="znak='b';send()">b</button>
+    <button class="ee" onclick="znak='c';send()">c</button>
+    <button class="ee" onclick="znak='d';send()">d</button>
+    <button class="ee" onclick="znak='e';send()">e</button>
+    <button class="ee" onclick="znak='f';send()">f</button>
+    <button class="ee" onclick="znak='g';send()">g</button>
+    <button class="ee" onclick="znak='h';send()">h</button>
+    <button class="ee" onclick="znak='i';send()">i</button>
+    <button class="ee" onclick="znak='j';send()">j</button>
+    <button class="ee" onclick="znak='k';send()">k</button>
+    <button class="ee" onclick="znak='l';send()">l</button>
+    <button class="ee" onclick="znak='m';send()">m</button>
+    <button class="ee" onclick="znak='n';send()">n</button>
+    <button class="ee" onclick="znak='o';send()">o</button>
+    <button class="ee" onclick="znak='p';send()">p</button>
+    <button class="ee" onclick="znak='q';send()">q</button>
+    <button class="ee" onclick="znak='r';send()">r</button>
+    <button class="ee" onclick="znak='s';send()">s</button>
+    <button class="ee" onclick="znak='t';send()">t</button>
+    <button class="ee" onclick="znak='u';send()">u</button>
+    <button class="ee" onclick="znak='v';send()">v</button>
+    <button class="ee" onclick="znak='w';send()">w</button>
+    <button class="ee" onclick="znak='x';send()">x</button>
+    <button class="ee" onclick="znak='y';send()">y</button>
+    <button class="ee" onclick="znak='z';send()">z</button>
+
+</body>
+
+<script>
+    var room=1;
+    var znak='o';
+    var restart=0;
+    var info=document.querySelector("#info");
+    for(let i=1;i<=8;i++) 
+        $("nav").append("<button>"+i+"</button>");
+
+    for(let i=0;i<400;i++)
+        $("#plansza").append("<div class='xx' id='"+i+"'></div>");
+
+    var pola=document.querySelectorAll("#plansza >div");
+
+    var kolor = {
+        'X': 'white',
+        'a': 'black',
+        'b': 'red',
+        'c': 'blue',
+        'd': 'orange',
+        'e': 'pink',
+        'f': 'yellow',
+        'g': 'green',
+        'h': 'grey',
+        'i': 'violet',
+        'j': 'brown',
+        'k': 'purple',
+        'l': 'aqua',
+        'm': 'coral',
+        'n': 'olive',
+        'o': 'navy',
+        'p': 'teal',
+        'q': 'tan',
+        'r': 'cyan',
+        's': 'bisque',
+        't': 'gold',
+        'u': 'hotpink',
+        'v': 'magenta',
+        'w': 'teal',
+        'x': 'tomato',
+        'y': 'wheat',
+        'z': 'goldenrod'
+    }
+
+function receive(data)
+{
+    let x=JSON.parse(data);
+    $("h1 b").html(x.room);
+    for(let i=0;i<400;i++)
+    {
+        $(pola[i]).html(x.znaki[i]);
+        $(pola[i]).css('background-color', kolor[x.znaki[i]]);
+        $(pola[i]).css('color', kolor[x.znaki[i]]);
+    }
+}
+
+function send()
+{    $.post("text3.php",{room:room,restart:restart})
+    .done(receive)
+    .fail(function(){$("#info").html("Błąd połączenia")})
+}
+send();
+setInterval(send,1000);
+
+$("#plansza >div").click(function(){      
+        $.post("text3.php",{room:room,restart:restart,znak:znak,id:this.id})
+        .done(receive)
+        .fail(function(){$("#info").html("Błąd połączenia")})
+    });
+
+$("nav button").click(function(){
+    room=+this.innerHTML;
+    send()
+    $("nav button").removeClass('active')
+    $(this).addClass('active')
+})
+
+$('#rest').click(function(){
+    $('.xx').css('background-color','white');
+})
+
+$("nav button:first").trigger('click');
+
+var x = document.getElementsByClassName("ee");
+for(let i of x)
+{
+    $(i).css('background-color', kolor[i.textContent]);
+    $(i).css('color', kolor[i.textContent]);
+}
+
+</script>
+</html>

@@ -1,0 +1,64 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Zadanie 4</title>
+</head>
+<body>
+  
+    <p>Jquery działa na zasadzie łapania selektora i nadawaniu mu różnych działań zdefiniowwanych w funkcjach jquery.</p>
+    <p>$(selektor).funkcja(argumenty);</p>
+    <p>Selektor to elementy na stronie: td, #=id, .=class, które są podawane działaniom funkcji. Jeśli nie podamy żadnego agrumentu funkcji to zostanie zwrócony atrybut lecz jeśli podamy to coś ustawimy.</p>
+    <h2>A</h2>
+    <ul>
+        <li>Bez argumentów
+            <ul>
+                <li>css - zwróci właściwości CSS podanego elementu</li>
+                <li>html - zwróci innerHTML pierwszego dopasowanego elementu</li>
+                <li>text - zwraca treść tekstową wszystkich dopasowanych elementów</li>
+                <li>attr - zwraca wartość podanego atrybutu dopasowanego elementu</li>
+                <li>val - zwraca wartość atrybutu value dopasowanego elementu</li>
+            </ul>
+        </li>
+        <li>Z argumentami
+            <ul>
+                <li>css - ustawi podane właściwości CSS podanego elementu</li>
+                <li>html - dodaje innerHTML do pierwszego dopasowanego elementu</li>
+                <li>text - dodaje tekst do wszystkich dopasowanych elementów</li>
+                <li>attr - dodaje wartości do podanych argumentów dopasowanego elementu</li>
+                <li>val - ustawia wartośc atrybutu value dopasowanego elementu</li>
+            </ul>
+        </li>
+    </ul>
+
+    <h2>B</h2>
+    <ul>
+        <li>hide - ukrywa podane elementy strony (podobne do css display: none;)</li>
+        <li>remove - usuwa podany element z jego podrzędnymi</li>
+        <li>visible - selektor wybierający wszystkie widoczne i dopasowane elementy</li>
+        <li>slideUp - przesuwa w górę element ukrywając inny</li>
+        <li>fadeOut - stopniowo zmienia krycie wybranych elementów, efekt blaknięcia</li>
+    </ul>
+
+    <h2>C</h2>
+    <ul>
+        <li>click - $(selektor).click(function(){})</li>
+        <li>mouseover - $(selektor).mouseover(function(){})</li>
+        <li>mouseout - $(selektor).mouseout(function(){})</li>
+        <li>keydown - $(selektor).keydown(function(){})</li>
+    </ul>
+
+    <h2>D</h2>
+    <ul>
+        <li>before - wstawia określoną treść przed wybranymi elementami</li>
+        <li>after - wstawia określoną treść po wybranych elementach</li>
+        <li>prepend - wstawia określoną treść na początku wybranych elementach</li>
+        <li>append - wstawia określoną treść na końcu wybranych elementach</li>
+        <li>remove - usuwa określoną treść wybranych elementów</li>
+        <li>empty - usuwa elementy potomne wybranego elementu</li>
+    </ul>
+
+    <h2>E</h2>
+    <p>animate - wykona niestandardową animację zestawu właściwości CSS</p>
+
+</body>
+</html>

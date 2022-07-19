@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="pl">
+<head>
+	<meta charset="utf-8" />
+	<title>Realizacje</title>
+	<link rel="shortcut icon" href="src/icon.png" type="image/x-icon">
+	<link rel="stylesheet" href="src/style.css" type="text/css" />
+	<link href='http://fonts.googleapis.com/css?family=Lato:400,900&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+</head>
+<body>
+	
+	<div id="container">
+	
+		<div id="name-logo">
+			<div id="logo" >
+				<img width="100" height="100" src="src/logo.png">
+			</div>
+			<div id="name">
+				Serwis Komputerowy
+			</div>
+			<div style="clear:both;"></div>
+		</div>
+		
+		<div id="menu">
+			<a class="option" href="index.html"><div>Strona główna</div></a>
+			<a class="option" href="uslugi.html"><div>Usługi</div></a>
+			<a class="option" href="realizacje.html"><div>Realizacje</div></a>
+			<a class="option" href="pracownicy.html"><div>Pracownicy</div></a>
+			<a class="option" href="opinie.html"><div>Opinie</div></a>
+			<a class="option" href="kontakt.html"><div>Kontakt</div></a>
+			<div style="clear:both;"></div>
+		</div>
+		
+		<div id="content">
+			<span class="bigtitle">Realizacje</span>
+			<div class="dottedline"></div>
+			
+			<center>
+				<div id="buttons">
+					<button class="click" onclick="f(-1)"> << </button>
+					<button class="click" onclick="f(1)"> >> </button>
+				</div>
+				
+				
+				<div id="imgs">
+					<img style="display: inline" class="imgs" src="src/imgs_r/1.jpg">
+					<img style="display: none;" class="imgs" src="src/imgs_r/2.jpg">
+					<img style="display: none;" class="imgs" src="src/imgs_r/3.jpg">
+					<img style="display: none;" class="imgs" src="src/imgs_r/4.jpg">
+					<img style="display: none;" class="imgs" src="src/imgs_r/5.jpg">
+					<img style="display: none;" class="imgs" src="src/imgs_r/6.jpg">
+					<img style="display: none;" class="imgs" src="src/imgs_r/7.jpg">
+					<img style="display: none;" class="imgs" src="src/imgs_r/8.jpg">
+					<img style="display: none;" class="imgs" src="src/imgs_r/9.jpg">
+					<img style="display: none;" height="470" class="imgs" src="src/imgs_r/10.jpg">
+					<img style="display: none;" class="imgs" src="src/imgs_r/11.jpg">
+				</div>
+			</center>
+			
+		</div>	
+		
+		<div id="footer">
+			Serwis komputerowy - najlepszy serwis komputerów we Wrocławiu. Strona w sieci od 2021r.  &copy; Wszelkie prawa zastrzeżone
+		</div>
+	
+	</div>
+	
+</body>
+
+<script>
+	
+	var i=0;  
+	var images = document.getElementsByClassName("imgs");
+
+	function f(x)
+	{
+		i+=x
+		if(i>-1 && i<10)
+		{
+			if(x==-1)
+			{
+				images[i+1].style.display='none';
+				images[i].style.display='inline';
+			}
+			else
+			{
+				images[i-1].style.display='none';
+				images[i].style.display='inline';
+			}
+		}
+		else if(i<0)
+		{
+			i=9
+			images[0].style.display='none';
+			images[i].style.display='inline';
+		}
+		else if(i==10)
+		{
+			i=0
+			images[9].style.display='none';
+			images[i].style.display='inline';
+		}
+	}
+
+</script>
+
+</html>

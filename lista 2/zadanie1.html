@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 1</title>
+</head>
+<body>
+    
+    <button style="position:absolute" onmousedown="this.style.left = (Math.random()*100)+'%';">Kliknij</button>
+    </br>
+    
+    <p>
+        Przycisk przy wciśnięciu losuje liczbę z funkcji random biblioteki Math z zakresu &lt;0,1), 
+        po tym wylosowana liczba jest mnożona przez 100 i otrzymujemy zakres &lt;0,99&gt;, do liczby
+        dopisywany jest znak procenta i javascript ustawia styl położenia przycisku na wylosowaną wartość,
+        ponieważ przycisk na position:absolute to dopisanie left pozwala na jego przemieszczenie po całej szerokości strony.
+    </p>
+    
+    <div><button style="background: green;" onclick='this.style="background-color: green; margin-top:" + Math.random()*50 + "%";'>Przycisk poziomy</button></div>
+    </br>
+    <div><button style="background: red;" onclick='this.style="background-color: red; margin-left:" + Math.random()*30 + "%; margin-top:" + Math.random() * 30 + 
+    "%";'>Przycisk poionowy i poziomy</button></div>
+
+    
+</body>
+</html>

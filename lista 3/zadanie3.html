@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 3</title>
+</head>
+<body>
+    n=<input name="n" value=55 type="number">
+    <button onclick="witaj()">Witaj</button>
+    <button onclick="liczby100()">1 .. 100</button>
+    <button onclick="liczbyN()">1 .. n</button>
+    <button onclick="wieloN()">Wielokrotności n</button>
+    <button onclick="ukryj()">Ukryj</button>
+    <button onclick="pokaz()">Pokaż</button>
+
+    <div id='ramka'></div>
+    
+    <script>
+        
+        function witaj(){
+            document.getElementById("ramka").innerText = "Dzień dobry";
+        }
+
+        function liczby100(){
+            var x = "";
+            for(i = 1; i <= 100; i++){
+                x += i + " ";
+            }
+            document.getElementById("ramka").innerText = x;
+        }
+
+        function liczbyN(){
+            var n = document.getElementsByName("n")[0].value;
+            var x = "";
+            for(i = 1; i <= n; i++){
+                x += i + " ";
+            }
+            document.getElementById("ramka").innerText = x;
+        }
+
+        function wieloN(){
+            var n = document.getElementsByName("n")[0].value;
+            var x = "";
+            for(i = 1; i <= 100; i++){
+                x += n*i + " ";
+            }
+            document.getElementById("ramka").innerText = x;
+        }
+
+        function ukryj(){
+            document.getElementById("ramka").style.display = "none";
+        }
+
+        function pokaz(){
+            document.getElementById("ramka").style.display = "block";
+        }
+
+    </script>
+    
+</body>

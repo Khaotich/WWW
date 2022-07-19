@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <title>Zadanie 5</title>
+    <style>
+        #start {
+            margin-bottom: 60px;
+        }
+
+        #stop, #start {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        
+        #main {
+            margin: auto;
+            display: block;
+            width: 800px;
+        }
+    </style>
+</head>
+<body onload="draw()">
+
+    <div id="main">
+        <table id='start'></table>
+        <table id='stop'></table>
+        <img src="wiewiorka.png" id="picture" style="display: none">
+    </div>
+
+    <script>
+
+        function draw() {
+            var cur;
+            var w = document.getElementById("picture").width;
+            var h = document.getElementById("picture").height;
+            var w_1 = w;
+            var h_1 = h;
+            w_2 = 3;
+            h_2 = 3; 
+            var row = '';
+            for (i = 0; i < w_2; i++) { row += "<td></td>" }
+            for (i = 0; i < h_2; i++) {
+                $("#start").append("<tr>" + row + "</tr>");
+                $("#stop").append("<tr>" + row + "</tr>");
+            }
+            var x = document.querySelectorAll("td");
+    
+            for (var j = 0; j < (x.length); j++) {
+                x[j].style.width = Math.floor(w / w_2) + 'px';
+                x[j].style.height = Math.floor(h / h_2) + 'px';
+            }
+    
+            for (i = 0; i < w_2 * h_2; i++) {
+                if (i % w_2 == 0) { h_1 -= Math.floor(h / h_2) };
+    
+                x[i].style.backgroundImage = "url('wiewiorka.png')";
+                x[i].style.backgroundPosition = w_1 + 'px' + ' ' + h_1 + 'px';
+    
+                if (i % w_2 == 0) { w_1 = w };
+                w_1 -= Math.floor(w / w_2);
+            }
+    
+            var x = document.querySelectorAll("td");
+            var h = 0;
+            var array = [];
+            while (h < w_2 * h_2) {
+                array.push(h);
+                h += 1;
+            }
+    
+            mix(array);
+    
+            var c;
+            var d;
+            for (k = 0; k < ((w_2 * h_2) / 2); k++) {
+                r = Math.floor(Math.random() * (w_2 * h_2));
+                c = array[array.length - k];
+                d = array[k];
+                tur = $(x[c]).css("background-position");
+                pure = $(x[d]).css("background-position");
+    
+                $(x[d]).css("background-position", tur);
+                $(x[c]).css("background-position", pure);
+    
+            }
+    
+            $('#start td').draggable({
+                drag: function (event, ui) {
+                    $(".cur").removeClass('cur');
+                    cur = this;
+                    $(this).addClass('cur');
+                }
+            }
+            );
+            $('#stop td').droppable({
+                drop: function (event, ui) {
+                    cur.style.left = '0px';
+                    cur.style.top = '0px';
+                    $(this).prepend(cur);
+                }
+            });
+        }
+    
+        function mix(a) {
+            var j, x, i;
+            for (i = a.length - 1; i > 0; i--) {
+                j = Math.floor(Math.random() * (i + 1));
+                x = a[i];
+                a[i] = a[j];
+                a[j] = x;
+            }
+        }
+    
+    </script>
+
+</body>
+</html>

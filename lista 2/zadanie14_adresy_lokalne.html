@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Zadanie 14</title> 
+    <style>
+      
+      body {text-align:center}
+      img{
+        vertical-align:middle;
+        height: 400px;
+        }  
+    
+    </style>
+</head>
+<body>
+    
+  <button onclick="f(-1)"> << </button>
+  <img src="img/a0.jpg">
+  <button onclick="f(1)"> >> </button>
+  <script>
+    var adr = ["img/a0.jpg","img/a1.jpg","img/a2.jpg","img/a3.jpg","img/a4.jpg",
+        "img/a5.jpg","img/a6.jpg","img/a7.jpg","img/a8.jpg","img/a9.jpg"];
+    var img=document.getElementsByTagName("img")[0];
+    var i=0;
+    function f(x){
+      i=i+x;
+      if(i>-1 && i<10)
+      {
+        img.src=adr[i];
+      }
+      else if(i<0)
+      {
+        i=9;
+        img.src=adr[i];
+      }
+      else if(i==10)
+      {
+        i=0;
+        img.src=adr[i];
+      }
+    }
+  </script>
+
+</body>
+</html>

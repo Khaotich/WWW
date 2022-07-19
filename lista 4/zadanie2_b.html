@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Zadanie 2 B</title> 
+    <style>
+
+        div
+        {
+            position:absolute;
+            bottom:50%;
+            left:50%;
+            transform-origin: 50% 100%;
+            width: 10px;
+            border: 2px solid black;
+            background-color: black;
+            color: white;
+        }
+        
+        #s{height: 310px;}
+        #m{height: 300px;}
+        #g{height: 200px;}
+
+    </style>
+</head>
+<body>
+  
+    <div id="g">G</div>
+    <div id="m">M</div>
+    <div id="s">S</div>
+
+    <script>
+
+        function czas()
+        {
+            var data = new Date();
+            var godzina = data.getHours();
+            var minuta = data.getMinutes();
+            var sekunda = data.getSeconds();
+
+            var g = 0.0083*3600*(godzina+minuta/60);
+            var m = 6*(minuta+sekunda/60);
+            var s = 6*sekunda;
+
+            document.getElementById('g').style.transform = 'rotate(' + g + 'deg)';
+            document.getElementById('m').style.transform = 'rotate(' + m + 'deg)';
+            document.getElementById('s').style.transform = 'rotate(' + s + 'deg)';
+        }
+        czas();
+        setInterval (czas,1000);
+       
+    </script>
+
+</body>
+</html>

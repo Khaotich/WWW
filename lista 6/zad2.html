@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <title>Zadanie 2</title>
+  <style>
+    @keyframes jazda {
+      from {
+        transform: translate(0px);
+      }
+
+      to {
+        transform: translate(95px);
+      }
+    }
+
+    #car:active {
+      animation-name: jazda;
+      animation-duration: 1s;
+    }
+
+    @keyframes ruch {
+      from {
+        transform: translate(0px);
+      }
+
+      to {
+        transform: translate(80px);
+      }
+    }
+    #cloud:active
+    {
+      animation-name: ruch;
+      animation-duration: 1s;
+    }
+
+    @keyframes akcja {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(180deg);
+      }
+    }
+    #house:active
+      {
+        animation-name: akcja;
+        animation-duration: 1s;
+      }
+
+  </style>
+</head>
+<body>
+  <svg width="400" height="250" style="background-color: aqua;">
+
+    <g id="car">
+      <!-- Samochód -->
+      <path id="c1" d="M200,200 L300,200 L300,170 L280,150 L220,150 L200,170 L200,200 Z" stroke="black" fill="yellow" />
+      <path id="c2" d="M220,200 m-15,0 a15,15 0 1,0 30,0 a15,15 0 1,0 -30,0 Z" fill="black" />
+      <path id="c3" d="M280,200 m-15,0 a15,15 0 1,0 30,0 a15,15 0 1,0 -30,0 Z" fill="black" />
+      <path id="c4" d="M210,170 L290,170 L280,155 L220,155 Z" stroke="black" fill="blue" />
+    </g>
+
+    <g id="house">
+      <!-- Dom -->
+      <path id="h1" d="M20,200 L150,200 L150,100 L20,100 Z" stroke="black" fill="green" />
+      <path id="h2" d="M0,100 L170,100 L85,20 Z" stroke="black" fill="red" />
+      <path id="h3" d="M90,160 L140,160 L140,120 L90,120 Z" stroke="black" fill="blue" />
+      <path id="h4" d="M40,200 L70,200 L70,140 L40,140 Z" stroke="black" fill="rgb(40,20,1)" />
+      <path id="h5" d="M65,170 m-3,0 a3,3 0 1,0 6,0 a3,6 0 1,0 -6,0 Z" fill="black" />
+    </g>
+
+    <g id="cloud">
+      <!-- Chmura -->
+      <path id="one" d="M220,80 Q280,20,320,80 Z" stroke="black" fill="white" />
+    </g>
+  </svg>
+
+</body>
+</html>

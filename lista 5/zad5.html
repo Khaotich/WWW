@@ -1,0 +1,121 @@
+<html>
+<head>
+	<meta charset='utf-8'/>
+	<title>Zadanie 5</title>
+	<style>
+	#zegar {
+				margin:auto;
+				display:block;
+				border:1px solid grey;
+			}
+			
+	#godzina{
+				text-align:center;
+				margin:10px;
+				font-size:20px;
+			}
+	</style>
+</head>
+
+<body>
+
+	<canvas id="zegar" height="800" width="800">		
+		Your browser does not support the canvas tag.   
+	</canvas>
+
+	<div id="godzina"></div>
+
+</body>
+
+<script> 
+	rysujZegar();                  // narysuj zegar
+	setInterval(rysujZegar,50);  // rysuj zegar co sekundę (1000ms)
+
+	var x=200,y=200, vx=20, vy=20;
+	// funkcja do rysowania kresek 
+	function kreska(ctx,r1,r2,alpha)
+	{
+		alpha*=Math.PI*2;
+		ctx.beginPath();
+		ctx.moveTo(x+r1*Math.sin(alpha),y-r1*Math.cos(alpha));
+		ctx.lineTo(x+r2*Math.sin(alpha),y-r2*Math.cos(alpha));
+		ctx.stroke();
+	}
+
+	// Rysuje zegar wskazujący bieżącą godzinę
+	function rysujZegar()
+	{    
+		
+		var c=document.getElementById("zegar");
+		var ctx=c.getContext("2d");
+		
+		
+		
+		//ruch
+		x+=vx;  // obblicz nowe współrzędne zegara
+        y+=vy;
+            
+        if(x>700 || x<100)  vx*=-1; // odbij jak wyszłedł za ramkę
+        if(y>700 || y<100)  vy*=-1; // odbij jak wyszłedł za ramkę
+            
+        c.style.left= x+"px";  // umieść zegar w nowym miejscu
+        c.style.top = y+"px";  // umieść zegar w nowym miejscu
+
+		
+		
+		
+		// Zamalowanie tła na biało (wymazuje poprzedni rysunek zegara)
+		ctx.fillStyle="white";
+		ctx.fillRect(0,0,x*2,y*2);
+		
+
+		// tarcza zegara		
+		ctx.strokeStyle="black"; // kolor linii  
+		ctx.lineWidth=3; 		 // szerokość linii
+		
+		ctx.beginPath();
+		// rysujemy okrąg
+		ctx.arc(x, // x środka okręgu
+				y, // y środka okręgu
+				95, // promień łuku 
+				0,        // kąt początkowy
+				2*Math.PI // kąt końcowy 
+				);
+		ctx.stroke();     // narysuj        
+		
+
+		// Znaczki godzinowe o szerokości 10
+		ctx.lineWidth=10;
+		for(i=0;i<12;i++)
+			kreska(ctx,85,95,i/12);
+
+		// Znaczki minutowe o szerokości 3
+		ctx.lineWidth=3;
+		for(i=0;i<60;i++)
+			kreska(ctx,92,95,i/60);
+
+		
+		var data=new Date();           // Pobieramy datę systemową
+		var sekundy=data.getSeconds(); // Wyciągamy z niej sekundy
+		var minuty=data.getMinutes();  // minuty
+		var godziny=data.getHours();   // i godziny
+		
+		//Wskazówka godzinowa
+		ctx.lineWidth=7;
+		kreska(ctx,-9,70, godziny/12+minuty/60/12);
+		
+		//Wskazówka minutowa
+		kreska(ctx,-15,85, minuty/60+sekundy/60/60);
+		
+		//Wskazówka sekundowa
+		ctx.lineWidth=2;
+		ctx.strokeStyle="grey";
+		kreska(ctx,-20,85, sekundy/60);		
+	}
+
+
+</script>
+
+</html>
+
+

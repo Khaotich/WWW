@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 7</title>
+    <style>
+        h1
+        {
+            padding-top: 0;
+            padding-left: 25px;
+        }
+        table
+        {
+            border-collapse: collapse;
+        }
+        
+        td
+        {
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+        }
+
+        img
+        {
+            width: 40px;
+            height: 40px;
+        }
+    </style>
+</head>
+<body onload="spawn()">
+
+    <p>Zielony : Czerwony</p>
+    <h1 id="result">0 : 0</h1>
+    <button onclick="new_game()">Nowa gra</button>
+    <br><br><br>
+    <div id="game"></div>
+
+    <script>
+
+        var red = 0;
+        var green = 0;
+        var toure = 'green';
+        var postion_g = 0;
+        var postion_r = 0;
+
+        //Funkcja przeładowująca stronę z nową grą
+        function new_game()
+        {
+            window.location.reload(true);
+        }
+
+        //Funkcja wywoływana co 0,5 sekundy
+        function game()
+        {
+            switcher(toure);
+        }
+
+        //Funkcja inicjująca grę
+        function spawn()
+        {
+            toure = 'green';
+            var s = '<table>';
+            var l = 0; // temp
+            for(i=0; i<10; i++)
+            {
+                s += '<tr>';
+                for(j=0; j<10; j++)
+                {
+                    s += '<td></td>';
+                    l++;
+                }
+                s += '</tr>';
+            }
+            document.getElementById('game').innerHTML = s;
+            
+            postion_g = parseInt(Math.random() * 100);
+            postion_r = parseInt(Math.random() * 100);
+            
+            while(postion_g==postion_r) postion_r = parseInt(Math.random() * 100);
+
+            document.getElementsByTagName('td')[postion_g].innerHTML += '<img src="img/green.png">';
+            document.getElementsByTagName('td')[postion_r].innerHTML += '<img src="img/red.png">';
+        }
+
+        //Funkcja obliczająca kolejny ruch
+        function move(x)
+        {
+            var options = [];
+            var next = 0;          
+
+            if(x==0)
+            {
+                options = [1,10,11];
+                next = options[parseInt(Math.random() * options.length)];
+            }
+            else if(x==9)
+            {
+                options = [8,18,19];
+                next = options[parseInt(Math.random() * options.length)];
+            }
+            else if(x==90)
+            {
+                options = [80,81,91];
+                next = options[parseInt(Math.random() * options.length)];
+            }
+            else if(x==99)
+            {
+                options = [88,89,98];
+                next = options[parseInt(Math.random() * options.length)];
+            }
+            else if(x in [1,2,3,4,5,6,7,8])//góra
+            {
+                options = [x-1,x+1,x+9,x+10,x+11];
+                next = options[parseInt(Math.random() * options.length)];
+            }
+            else if(x in [91,92,93,94,95,96,97,98])//dół
+            {
+                options = [x-1,x-11,x-10,x-9,x+1];
+                next = options[parseInt(Math.random() * options.length)];
+                
+            }
+            else if(x in [10,20,30,40,50,60,70,80])//lewo
+            {
+                options = [x-10,x-9,x+1,x+11,x+10];
+                next = options[parseInt(Math.random() * options.length)];
+            }
+            else if(x in [19,29,39,49,59,69,79,89])//prawo
+            {
+                options = [x-10,x-11,x-1,x+9,x+10];
+                next = options[parseInt(Math.random() * options.length)];
+            }
+            else if(x in [11,12,13,14,15,16,17,18,21,22,23,24,25,26,27,28,31,32,33,34,35,36,37,38,41,42,43,44,45,46,47,
+                48,51,52,53,54,55,56,57,58,61,62,63,64,65,66,67,68,71,72,73,74,75,75,76,77,78,81,82,83,84,85,86,87,88])
+            {
+                options = [x-11,x-10,x-9,x-1,x+1,x+9,x+10,x+11];
+                next = options[parseInt(Math.random() * options.length)];
+            }
+            check();
+            return Math.abs(next);
+        }
+
+        //Funkcja przełanczająca graczy
+        function switcher(player)
+        {
+            if(player=='green')
+            {
+                document.getElementsByTagName('td')[postion_g].innerHTML = '';
+                postion_g = move(postion_g);
+                document.getElementsByTagName('td')[postion_g].innerHTML = '<img src="img/' + player + '.png">';
+                check();
+                toure = 'red';
+            }
+            else if(player=='red')
+            {
+                document.getElementsByTagName('td')[postion_r].innerHTML ='';
+                postion_r = move(postion_r);
+                document.getElementsByTagName('td')[postion_r].innerHTML = '<img src="img/' + player + '.png">';
+                check();
+                toure = 'green';
+            }
+        }
+
+        //Funkcja sprawdzająca kolizje graczy
+        function check()
+        {
+            if(postion_g==postion_r)
+            {
+                if(toure=='green')
+                {
+                    green++;
+                    document.getElementById('result').innerText = green + ':' + red;
+                    spawn();
+                }
+                else 
+                {
+                    red++;
+                    document.getElementById('result').innerText = green + ':' + red;
+                    spawn();
+                }
+            }
+            end_game();
+        }
+        
+        //Funkcja sprawdzająca kto wygrał grę
+        function end_game()
+        {
+            if(red==5)
+            {
+                window.alert("Grę wygrał czerwony!");
+                clearInterval(game);
+            }
+            else if(green==5)
+            {
+                window.alert("Grę wygrał zielony!");
+                clearInterval(game);
+            }
+        }
+
+        var game = setInterval(game,500);
+
+    </script>
+
+</body>
+</html>

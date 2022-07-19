@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 6</title>
+    <style>
+        
+        #ramka {height:800px;width:800px; border:1px solid grey;margin:auto;position:relative;}
+        b {display:block;height:10px;width:10px;position:absolute;text-align:center;}
+        h1,div {text-align:center;margin:20px}
+        img{height: 50px; width: 50px; transform: rotate(30deg);}
+        p{position: absolute;}
+
+    </style>
+</head>
+<body onload="new_game(20); predkosc=15;">
+
+    <p id="wynik"></p>
+    <h1>Samolociki</h1>
+    <div id='ramka'></div>
+    
+    <div>
+        <button onclick="run=true;step();now()"> Start </button>
+        <button onclick="run=false"> Stop </button>
+        <button onclick="new_game(20); predkosc=20;"> Nowa gra </button>
+        <button onclick="new_game(25); predkosc=18;"> Poziom 1</button>
+        <button onclick="new_game(30); predkosc=15;"> Poziom 2</button>
+        <button onclick="new_game(35); predkosc=10;"> Poziom 3</button>
+    </div>
+
+
+    <script>
+            
+            var samoloty;
+            var predkosc;
+            var run = false;
+            var start;
+            var s = '';
+            var planes;
+
+            function new_game(x)
+            {
+                samoloty = x;
+                s = '';
+                document.getElementById('wynik').innerText = 'Obecna liczba samolotów : ' + samoloty;
+                for(let i=0;i<samoloty;i++) s+= "<b><img src='img/plane.png'></b>";
+                document.getElementById('ramka').innerHTML = s;
+                
+                planes = document.getElementsByTagName('B');
+                
+                for(plane of planes)
+                {
+                    plane.x = Math.random()* 750;
+                    plane.y = Math.random()* 750;
+
+                    plane.vx = Math.random()* 15 - 10;
+                    plane.vy = Math.random()* 15 - 10;
+
+                    plane.style.left = plane.x + "px";
+                    plane.style.top  = plane.y + "px";
+                    plane.style.transform = "rotate(" + Math.atan2(plane.vy,plane.vx) + "rad)";
+
+                    plane.onmousedown = stop;
+                }
+            }
+
+            function step(x)
+            {
+                for(let plane of planes)
+                {
+                    plane.x += plane.vx;
+                    plane.y += plane.vy;
+
+                    if(plane.x>750 || plane.x<0)  plane.vx*= -1;
+                    if(plane.y>750 || plane.y<0)  plane.vy*= -1;
+
+                    plane.style.left = plane.x + "px";
+                    plane.style.top  = plane.y + "px";
+                    plane.style.transform = "rotate(" + Math.atan2(plane.vy,plane.vx) + "rad)";
+                }
+                if(run) setTimeout(step,predkosc); 
+            }
+
+            function stop()
+            {
+                if(run)
+                {
+                    this.style = 'display: none;';
+                    samoloty--;
+
+                    if(samoloty == 0)
+                    {
+                        var stop = Date.now();
+                        document.getElementById('wynik').innerText = 'Mission completed in ' + Math.round((stop-start)/1000) + ' seconds';
+                    }
+                    else
+                    {
+                        document.getElementById('wynik').innerText = 'Obecna ilość samolotów: ' + samoloty;
+                    }
+                }
+            }
+
+            function now()
+            {
+                start = Date.now();
+            }
+
+    </script>
+</body>
+</html>

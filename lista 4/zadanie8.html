@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 8</title>
+</head>
+<body>
+
+    <button onclick="wszyscy()">Wszyscy</button>
+    <button onclick="pokaz('fizyka')">Fizyka</button>
+    <button onclick="pokaz('chemia')">Chemia</button>
+    <button onclick="pokaz('biologia')">Biologia</button>
+    <button onclick="pokaz('informatyka')">Informatyka</button>
+
+    <div id="lista"></div>
+
+    <script>
+
+        var student=[ {imie:"Ola",nazwisko:"Lis",kierunek:"fizyka",wzrost:170},
+        {imie:"Ala",nazwisko:"Góral",kierunek:"chemia",wzrost:165},
+        {imie:"Olek",nazwisko:"Mazur",kierunek:"chemia",wzrost:176},
+        {imie:"Jan",nazwisko:"Nowak",kierunek:"fizyka",wzrost:180},
+        {imie:"Grzegorz",nazwisko:"Kowalski",kierunek:"biologia",wzrost:195},
+        {imie:"Julian",nazwisko:"Orłowski",kierunek:"biologia",wzrost:182},
+        {imie:"Adam",nazwisko:"Aelksy",kierunek:"informatyka",wzrost:174},
+        {imie:"Jakub",nazwisko:"Wolski",kierunek:"informatyka",wzrost:185},
+        {imie:"Bartosz",nazwisko:"Elwicki",kierunek:"informatyka",wzrost:178}];
+
+        function wszyscy()
+        {
+            var s = '<h2>Studenci</h2><ol>';
+            for(i=0; i<student.length; i++)
+            {
+                s += '<li' + ' style="' + kolor(student[i].kierunek) + szerokosc(student[i].wzrost) + '">' + student[i].imie + ' ' + student[i].nazwisko + ' (' + student[i].kierunek + ')</li>';
+            }
+            s+= '</ol>'
+            document.getElementById('lista').innerHTML = s;
+
+        }
+
+        function pokaz(x)
+        {
+            var s = '<h2>' + x + '</h2><ol>';
+            for(i=0; i<student.length; i++)
+            {
+                if(x==student[i].kierunek) s += '<li' + ' style="' + kolor(student[i].kierunek) + szerokosc(student[i].wzrost) + '">' + student[i].imie + ' ' + student[i].nazwisko + '</li>';
+            }
+            s+= '</ol>'
+            document.getElementById('lista').innerHTML = s;
+        }
+
+        function kolor(x)
+        {
+            var kolory = {fizyka:'blue', chemia:'yellow', biologia:'green', informatyka:'red'};
+            return ' background-color: ' + kolory[x] + ';';
+        }
+
+        function szerokosc(x)
+        {
+            return 'width:' + x*1.2 + 'px;';
+        }
+
+    </script>
+
+</body>
+</html>

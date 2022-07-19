@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Zadanie 10</title>
+<style>
+	h1 {font-size:50px}
+	#cel,#x{font-size:50px}
+	button{font-size:20px}
+	h1,div {text-align:center}
+	div {font-size:30px}
+	#jed, #dwa, #razy {
+		background:yellow;
+		border:1px solid grey;
+        font-size: 30px;
+		border-radius:5px;
+		margin:10px;
+		padding:10px;
+		height:60px;
+        width: 60px;
+		
+		}
+</style>
+</head>
+<body onload="losuj(100);">
+	 <h1>Binary</h1>
+	 
+	<div id='cel'></div>
+	<div id='x'></div>
+	
+	<div>
+		<button id='razy' onclick='razy()'>*3</button>  <button onclick="plus(1)" id='jed'>+1</button> <button onclick="plus(2)" id='dwa'>+2</button>
+	</div>
+
+	<div>
+		<button onclick='losuj(100)'>Do 100</button>
+		<button onclick='losuj(1000)'>Do 1000</button>
+		<button onclick='losuj(10000)'>Do 10000</button>
+		<button onclick='losuj(100000)'>Do 10000</button>
+		<button onclick='losuj(1000000)'>Do 100000</button>
+	</div>
+	<div>
+		Otrzymaj podaną liczbę z jedynki i dówjki za pomocą mnożenia przez 3 i dodawania jedynki lub dwójki.
+		<br/>
+		Uwaga: nie można wykonać dwóch dodawań bezpośrednio po sobie.
+	</div>
+
+	<div>
+		Aby wygrać grę należy wylosowaną liczbę zamienić na jej zapis binarny. Po tym wykonujemy ilość kroków = ilość cyfr zapisu binarnego liczby -1.
+		Zaczynamy od prawej strony i tak, jeśli mamy 1 to do naszej liczby dodajemy najpierw 1 potem mnożymy razy 2, jeśli natomiast jest 0 w zapisie liczby binarnie to tylko mnożymy razy 2.
+		I tak powtażając sekwencję tyle razy jak powyżej opisano uzyskamy wygraną.
+	</div>
+
+<script>
+	
+	var cel=document.querySelector('#cel');
+    var y=0;
+    var z=0;
+
+	function losuj(n)
+	{	
+		y=cel.innerHTML=Math.ceil(Math.random()*n);
+        document.getElementById('x').innerText=0;
+        z=0;
+        
+        document.getElementById('jed').disabled = false;
+		document.getElementById('dwa').disabled = false;
+		document.getElementById('jed').style.background='';
+		document.getElementById('dwa').style.background='';
+	}
+
+	function razy()
+	{
+        x.innerHTML*=3;
+        z*=3;
+		sprawdz();
+		document.getElementById('jed').disabled = false;
+		document.getElementById('dwa').disabled = false;
+		document.getElementById('jed').style.background='';
+		document.getElementById('dwa').style.background='';
+	}
+
+	function plus(n)
+	{   
+        x.innerHTML=Number(x.innerHTML)+n;
+        z+=n;
+		sprawdz();
+		document.getElementById('jed').disabled = true;
+		document.getElementById('dwa').disabled = true;
+		document.getElementById('jed').style.background='grey';
+		document.getElementById('dwa').style.background='grey';
+	}
+
+	function sprawdz()
+	{
+		if(z > y) cel.innerHTML='Niestety przegrałeś';
+		if(y == z) cel.innerHTML='Gratuluję wygranej!!!';		
+	}
+
+</script>
+
+</body>
+</html>

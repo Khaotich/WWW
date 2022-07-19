@@ -1,0 +1,213 @@
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<title>Zadanie 7</title>
+		<style>
+			canvas
+			{
+				margin-left: auto;
+    			margin-right: auto;
+				border: 2px solid black;
+				display: block;
+			}
+            button
+            {
+                margin-left: auto;
+    			margin-right: auto;
+				display: block;
+            }
+		</style>
+	</head>
+	<body>
+
+        <canvas id="rys" height="600" width="600"></canvas>
+        <br><br>
+		<button onclick="start()">Start</button>
+		<br>
+        <button onclick="stop()">Stop</button>
+	
+		<script>
+
+			var stan = false;
+			var game;
+            var dane = [{x:150, y:150, vx: 2, vy: -1, height:15, width: 7, rysuj: balwan},
+                        {x:450, y:450, vx: -1, vy: 2, height:25, width: 12, rysuj: balwan},
+                        {x:300, y:300, vx: -2, vy: -2, height:20, width: 10, rysuj: balwan}, 
+                        {x:100, y:400, vx: 2, vy: 2, height:10, width: 3, rysuj: drzewo},
+                        {x:450, y:200, vx: -1, vy: -1, height:20, width: 7, rysuj: drzewo},
+                        {x:150, y:500, vx: 3, vy: 3, height:20, width: 40, rysuj: domek},
+                        {x:250, y:100, vx: 1, vy: 1, height:15, width: 30, rysuj: domek}];
+
+            function balwan(){ snowman(this.x,this.y,this.height)};
+            function domek(){ house(this.x,this.y,this.height)};
+            function drzewo(){ tree(this.x,this.y,this.height)};
+            
+        
+            function balwan(){ snowman(this.x,this.y,this.height)}
+			function domek(){ house(this.x,this.y,this.height)}
+			
+			var ctx=document.querySelector("canvas").getContext("2d");
+			
+			function redraw(dane)
+			{
+				ctx.clearRect(0,0,600,600);
+				for(let x of dane) x.rysuj();
+			}
+			function ruch()
+			{
+				for(let f of dane)
+				{
+					f.x += f.vx; if(f.x + f.width < 50 || f.x + f.width > 540) f.vx *= -1;
+					f.y += f.vy; if(f.y + f.height < 100 || f.y + f.height > 550) f.vy *= -1;
+				}
+				redraw(dane);
+			}
+
+			function snowman(x,y,height)
+			{
+                var c = document.getElementById('rys');
+                var ctx = c.getContext('2d');
+                //dół
+				ctx.beginPath();
+				ctx.strokeStyle = 'black';
+				ctx.fillStyle = 'white';
+  				ctx.arc(x, y, height*2.5, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+				  
+				//środek
+				ctx.beginPath();
+				ctx.strokeStyle = 'black';
+				ctx.fillStyle = 'white';
+  				ctx.arc(x, y-(height*2), height*2, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//góra
+				ctx.beginPath();
+				ctx.strokeStyle = 'black';
+				ctx.fillStyle = 'white';
+  				ctx.arc(x, y-(height*3.5), height*1.5, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//prawe oko
+				ctx.beginPath();
+				ctx.strokeStyle = 'black';
+				ctx.fillStyle = 'black';
+  				ctx.arc(x+height*0.6, y-(height*4), height*0.2, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//lewe oko
+				ctx.beginPath();
+				ctx.strokeStyle = 'black';
+				ctx.fillStyle = 'black';
+  				ctx.arc(x-height*0.6, y-(height*4), height*0.2, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//usta
+				ctx.beginPath();
+				ctx.strokeStyle = 'red';
+				ctx.fillStyle = 'red';
+  				ctx.arc(x, y-(height*3), height*0.8, 0, Math.PI);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+			}
+
+			function tree(x,y,height)
+			{
+                var c = document.getElementById('rys');
+                var ctx = c.getContext('2d');
+                //pień
+				ctx.beginPath();
+				ctx.strokeStyle = '#6b481d';
+				ctx.fillStyle = '#6b481d';
+  				ctx.rect(x, y, height*2, height*3);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//liście
+				ctx.beginPath();
+				ctx.fillStyle = 'green';
+    			ctx.moveTo(x-(height*3),y);
+    			ctx.lineTo(x+(height*5),y);
+    			ctx.lineTo(x+(height*0.8),y-height*10);
+    			ctx.lineTo(x-(height*3),y);
+				ctx.fill();
+				ctx.closePath();
+			}
+
+			function house(x,y,height)
+			{
+                var c = document.getElementById('rys');
+                var ctx = c.getContext('2d');
+                //ściany
+				ctx.beginPath();
+				ctx.strokeStyle = 'yellow';
+				ctx.fillStyle = 'yellow';
+  				ctx.rect(x, y, height*6, height*4);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//okno
+				ctx.beginPath();
+				ctx.strokeStyle = 'blue';
+				ctx.fillStyle = 'blue';
+  				ctx.rect(x+(height*4), y+(height*0.7), height*1.5, height*1.5);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//drzwi
+				ctx.beginPath();
+				ctx.strokeStyle = 'brown';
+				ctx.fillStyle = 'brown';
+  				ctx.rect(x+height, y+(height*0.7), height*1.5, height*3);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//klamka
+				ctx.beginPath();
+				ctx.strokeStyle = 'black';
+				ctx.fillStyle = 'black';
+  				ctx.arc(x+(height*2.2), y+(height*2.2), height*0.2, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//dach
+				ctx.beginPath();
+				ctx.fillStyle = 'red';
+    			ctx.moveTo(x-(height*1.5),y);
+    			ctx.lineTo(x+(height*7.5),y);
+    			ctx.lineTo(x+(height*3),y-(height*4));
+    			ctx.lineTo(x-(height*1.5),y);
+				ctx.fill();
+				ctx.closePath();
+            }
+            
+            function start()
+            {
+                game = setInterval(ruch, 10);
+			}
+			
+			function stop()
+			{
+				clearInterval(game);
+			}
+
+		</script>
+
+	</body>
+</html>

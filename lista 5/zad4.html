@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 4</title>
+    <style>
+        * {font-family:Arial, Sans}
+        h1,b {font-weight:normal;}
+        div.wykres{text-align:center}
+        div.wykres > div {
+                width:50px;
+                margin:15px;
+                box-shadow:10px 10px 5px grey;
+                border:1px solid grey;
+                display:inline-block;
+                margin-top:50px;
+                vertical-align:bottom;
+                text-align:center;
+            }
+        div.wykres > div b { 
+                top:-20px;
+                display:box;
+                position:relative;
+                text-shadow:5px 5px 5px grey;
+            }   
+        div.wykres div div {
+                color:white;
+                position:relative;
+                top:-19px;
+                text-shadow:0px 0px 5px black;                
+                }
+    </style>
+</head>
+<body onload="wypisz()">
+
+    <div style="text-align: unset;" id="lista"></div>
+    <br><br>
+    <div id="form">
+            Imię: <input id="imie" type="text">
+            <br><br>
+            Nazwisko: <input id="nazwisko" type="text">
+            <br><br>
+            Wzrost: <input id="wzrost" type="number">
+            <br><br>
+            Kierunek: <select id="kierunek">
+                <option value="fizyka">Fizyka</option>
+                <option value="biologia">Biologia</option>
+                <option value="chemia">Chemia</option>
+                <option value="informatyka">Informatyka</option>
+            </select>
+            <br><br>
+            <button onclick="dodaj()">Dodaj</button>
+    </div>
+
+    <div style="text-align: center;" id="wykresy"></div>
+
+    <script>
+
+        var student = [ {imie:"Ola",nazwisko:"Lis",kierunek:"fizyka",wzrost:170},
+        {imie:"Ala",nazwisko:"Góral",kierunek:"chemia",wzrost:165},
+        {imie:"Olek",nazwisko:"Mazur",kierunek:"chemia",wzrost:176},
+        {imie:"Jan",nazwisko:"Nowak",kierunek:"fizyka",wzrost:180},
+        {imie:"Tomasz",nazwisko:"Piotrowski",kierunek:"chemia",wzrost:188},
+        {imie:"Grzegorz",nazwisko:"Kowalski",kierunek:"biologia",wzrost:195},
+        {imie:"Julian",nazwisko:"Orłowski",kierunek:"biologia",wzrost:182},
+        {imie:"Mikołaj",nazwisko:"Stępiński",kierunek:"informatyka",wzrost:178},
+        {imie:"Sebastian",nazwisko:"Dąbrowski",kierunek:"informatyka",wzrost:170},
+        {imie:"Adam",nazwisko:"Aelksy",kierunek:"informatyka",wzrost:174},
+        {imie:"Jakub",nazwisko:"Wolski",kierunek:"informatyka",wzrost:185},
+        {imie:"Bartosz",nazwisko:"Elwicki",kierunek:"informatyka",wzrost:178}];
+
+        function policz(studenci)
+        {
+            var ile = {chemia: 0, fizyka: 0, biologia: 0, informatyka: 0};
+            for(i=0; i<studenci.length; i++)
+            {
+                ile[studenci[i].kierunek] += 1; 
+            }
+            return ile;
+        }
+        
+        function wypisz(x='informatyka')
+        {
+            var ile = policz(student);
+            pokaz(x);
+            rysuj(ile);
+        }
+
+        function rysuj(plik)
+        {
+            var dane={title:'Ilość studentów na poszczególnych kierunkach',
+              data: [
+                    {name:"",value:0,color:"red"},
+                    {name:"",value:0,color:"orange"},
+                    {name:"",value:0,color:"black"},
+                    {name:"",value:0,color:"blue"},
+              ],
+              legend:'Studenci'
+            };
+            var i = 0;
+            for(let x in plik)
+            {
+                dane.data[i].name = x;
+                dane.data[i].value = plik[x];
+                i++;
+            }
+            wykres(dane);
+        }
+
+        function wykres(dane)
+        {
+            let t='<h1>'+dane.title+'</h1>';
+            t+='<div class="wykres">';
+            for(let d of dane.data)
+            {
+                t+="<div style='height:"+d.value*30+"px;background:"+d.color+"'>";
+                t+="<b>"+d.name+"</b>";
+                t+="<div>"+d.value+"</div>";
+                t+="</div>";
+            }
+             
+            t+='</div>';
+            t+="<div>"+dane.legend+"</div>";
+            document.getElementById('wykresy').innerHTML=t;
+        }
+        
+        function pokaz(x)
+        {
+            var s = '<h2>' + x + '</h2><ol>';
+            for(i=0; i<student.length; i++)
+            {
+                if(x==student[i].kierunek) s += '<li' + ' style="' + '">' + student[i].imie + ' ' + student[i].nazwisko + '</li>';
+            }
+            s+= '</ol>';
+            document.getElementById('lista').innerHTML = s;
+        }
+
+        function dodaj()
+        {
+            var temp = {imie: document.getElementById('imie').value, kierunek: document.getElementById('kierunek').value, 
+            nazwisko: document.getElementById('nazwisko').value, wzrost: document.getElementById('wzrost').value};
+            student.push(temp);
+            wypisz(document.getElementById('kierunek').value);
+            document.getElementById('imie').value='';
+            document.getElementById('nazwisko').value='';
+            document.getElementById('wzrost').value='';
+        }
+
+    </script>
+
+</body>
+</html>

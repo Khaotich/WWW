@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 5</title>
+    <style>
+        
+        table.A{
+            border-collapse: collapse;
+        }
+        table.A th{
+            border: 8px double sandybrown;
+            padding: 5px;
+            color: olive;
+            background: pink;
+            text-align: justify;
+            font-weight: 900;
+            margin: 5px;
+            vertical-align: auto ;
+            text-align: center;
+        }
+        table.A td{
+            border: 8px double sandybrown;
+            padding: 5px;
+            color: olive;
+            background: pink;
+            text-align: justify;
+            font-weight: 900;
+            margin: 5px;
+            vertical-align: middle;
+            text-align: center;
+        }
+
+
+        table.B{
+            border-collapse: collapse;
+        }
+        table.B th{
+            border: 1px dotted grey;
+            padding: 3px;
+            color: blue;
+            background: honeydew;
+            text-align: center;
+            font-weight: 700;
+            margin: 3px;
+            vertical-align: 5px;
+        }
+        table.B td{
+            border: 1px dotted grey;
+            padding: 3px;
+            color: blue;
+            background: honeydew;
+            text-align: center;
+            font-weight: 700;
+            margin: 3px;
+            vertical-align: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <!--rowspan służy do pionowego łączenia komórek tabeli-->
+    <!--colspan służy do poziomego łączenia komórek tabeli-->
+    
+    <table class="A">
+        <tr>
+          <th>Miesiąc</th>
+          <th>Oszczędności</th>
+          <th>Suma oszczędności</th>
+        </tr>
+        <tr>
+          <td>Maj</td>
+          <td>100 zł</td>
+          <td rowspan="2">180 zł</td>
+        </tr>
+        <tr>
+          <td>Czerwiec</td>
+          <td>80 zł</td>
+        </tr>
+    </table>
+    
+    </br>
+
+    <table class="B">
+        <tr>
+          <th>Miesiąc</th>
+          <th>Oszczędności</th>
+        </tr>
+        <tr>
+          <td>Maj</td>
+          <td>250 zł</td>
+        </tr>
+        <tr>
+          <td>Czerwiec</td>
+          <td>80 zł</td>
+        </tr>
+        <tr>
+          <td colspan="2">Suma Oszczędności: 330 zł</td>
+        </tr>
+      </table>
+
+</body>
+</html>

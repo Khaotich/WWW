@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Zadanie 1</title> 
+    <style>
+      
+        body {text-align:center}
+        img{
+            vertical-align:middle;
+            height: 400px;
+            }       
+
+    </style>
+</head>
+<body>
+    
+
+    <img style="display: inline" src="img/a0.jpg">
+    <img style="display: none;" src="img/a1.jpg">
+    <img style="display: none;" src="img/a2.jpg">
+    <img style="display: none;" src="img/a3.jpg">
+    <img style="display: none;" src="img/a4.jpg">
+    <img style="display: none;" src="img/a5.jpg">
+    <img style="display: none;" src="img/a6.jpg">
+    <img style="display: none;" src="img/a7.jpg">
+    <img style="display: none;" src="img/a8.jpg">
+    <img style="display: none;" src="img/a9.jpg">
+
+  
+    <script>
+        var i=0;  
+        function next()
+        {
+            i++;
+            if(i<9)
+            {
+                document.getElementsByTagName('img')[i-1].style = 'display: none;'
+                document.getElementsByTagName('img')[i].style = 'display: inline;'
+            }
+            else
+            {
+                i=0;
+                document.getElementsByTagName('img')[8].style = 'display: none;'
+                document.getElementsByTagName('img')[i].style = 'display: inline;'
+            }
+        }
+        setInterval(next,1000);
+    </script>
+
+</body>
+</html>

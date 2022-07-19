@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 6</title>
+    <style>
+        table{
+            border-collapse: collapse;
+            margin-top: 10px;
+            text-align: center;
+        }
+        td,th{
+            width: 50px;
+            height: 50px;
+            border: 2px solid black;
+        }
+        th{
+            background-color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    
+    <button onclick="mnozenie()">Mnożenie</button>
+    <button onclick="dodawanie()">Dodawanie</button>
+    <button onclick="modulo()">Modulo</button>
+    <button onclick="zwiekszanie()">Zwiększanie</button>
+    <button onclick="sumy()">Sumy</button>
+    <button onclick="parzyste()">Parzyste</button>
+    <button onclick="szachy()">Szachy</button>
+    <button onclick="gumkuj()">Gumkuj</button>
+    <button onclick="liczby()">Liczby</button>
+
+    <table>
+        <tr>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+      </table>
+      
+      <script>
+        
+        var tab = document.getElementsByTagName('table')[0];
+        for(let i=1;i<=10;i++)
+        {
+        tab.rows[0].cells[i].innerHTML = i;
+        tab.rows[i].cells[0].innerHTML = i;
+        }
+
+        var x = [1,2,3,4,5,6,7,8,9,10]
+
+        function mnozenie()
+        {
+            document.getElementsByTagName('th')[0].innerText = '*';
+            for(i=0; i<10; i++)
+            {
+                for(j=0; j<10; j++)
+                {
+                    document.getElementsByTagName('td')[parseInt(i.toString() + j.toString())].innerText = x[i] * x[j];
+                }
+            }
+                
+        }
+
+        function dodawanie()
+        {
+            document.getElementsByTagName('th')[0].innerText = '+';
+            for(i=0; i<10; i++)
+            {
+                for(j=0; j<10; j++)
+                {
+                    document.getElementsByTagName('td')[parseInt(i.toString() + j.toString())].innerText = x[i] + x[j];
+                }
+            }
+        }
+
+        function modulo()
+        {
+            document.getElementsByTagName('th')[0].innerText = '%';
+            for(i=0; i<10; i++)
+            {
+                for(j=0; j<10; j++)
+                {
+                    document.getElementsByTagName('td')[parseInt(i.toString() + j.toString())].innerText = x[i] % x[j];
+                }
+            }
+        }
+
+        function zwiekszanie()
+        {
+            for(i=0; i<10; i++)
+            {
+                for(j=0; j<10; j++)
+                {
+                    var x = parseInt(document.getElementsByTagName('td')[parseInt(i.toString() + j.toString())].innerText);
+                    document.getElementsByTagName('td')[parseInt(i.toString() + j.toString())].innerText = (x + 1);
+                }
+            }
+        }
+
+        function sumy()
+        {
+            for(i=0; i<10; i++)
+            {
+                var suma = 0;
+                for(j=0; j<10; j++)
+                {
+                    suma += parseInt(document.getElementsByTagName('td')[parseInt(i.toString() + j.toString())].innerText);
+                }
+                document.getElementsByTagName('th')[11+i].innerText = suma;
+            }
+
+            for(i=0; i<10; i++)
+            {
+                var suma = 0;
+                for(j=0; j<10; j++)
+                {
+                    suma += parseInt(document.getElementsByTagName('td')[parseInt(j.toString() + i.toString())].innerText);
+                }
+                document.getElementsByTagName('th')[1+i].innerText = suma;
+            }
+        }
+
+        function parzyste()
+        {
+            for(i=0; i<10; i++)
+            {
+                for(j=0; j<10; j++)
+                {
+                    if(parseInt(document.getElementsByTagName('td')[parseInt(i.toString() + j.toString())].innerText) % 2 == 0)
+                    {
+                        document.getElementsByTagName('td')[parseInt(i.toString() + j.toString())].style.backgroundColor = 'green';
+                    }
+                    else
+                    {
+                        document.getElementsByTagName('td')[parseInt(i.toString() + j.toString())].style.backgroundColor = 'yellow';
+                    }
+                }
+            }
+        }
+
+        function szachy()
+        {
+            for(i=0; i<10; i++)
+            {
+                for(j=0; j<10; j++)
+                {
+                    document.getElementsByTagName('td')[parseInt(i.toString() + j.toString())].style.backgroundColor = 'white';
+                }
+            }
+        }
+
+        function gumkuj()
+        {
+            document.getElementsByTagName('th')[0].innerText = '';
+            for(i=0; i<100; i++)
+            {
+                document.getElementsByTagName('td')[i].innerText = '';
+            }
+        }
+
+        function liczby()
+        {
+            for(i=0; i<100; i++)
+            {
+                document.getElementsByTagName('td')[i].innerText = (i + 1);
+            }
+        }
+
+    </script>
+
+</body>

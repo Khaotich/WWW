@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 2 A</title>
+    <style>
+        th,tr,td{
+            border: 2px solid black;
+            padding: 3px;
+        }
+        table{
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="wypiszA(imiona)">ImionaA</button>
+    <button onclick="wypiszB(imiona)">ImionaB</button>
+    <button onclick="wypiszC(imiona)">ImionaC</button>
+    <button onclick="wypiszD(imiona)">ImionaD</button>
+    <button onclick="wypiszA(liczby)">LiczbyA</button>
+    <button onclick="wypiszB(liczby)">LiczbyB</button>
+    <button onclick="wypiszC(liczby)">LiczbyC</button>
+    <button onclick="wypiszD(liczby)">LiczbyD</button>
+    <br><br>
+    <div id="ramka"></div>
+    
+    <script>
+        var imiona=["ola","ala","Ela"];
+        var liczby=[2,3,5,7,10,12,23];
+        
+        function wypiszA(tab)
+        {
+            var ramka = document.getElementById('ramka');
+            var s = "";
+            for(let x in tab){
+                s +=  tab[x] + " ";
+            }
+            ramka.innerHTML=s;
+        }
+
+        function wypiszB(tab)
+        {
+            var ramka = document.getElementById('ramka');
+            var s = "<ul>";
+            for(let x in tab){
+             s +=  "<li>" + tab[x] + "</li>";
+            }
+            ramka.innerHTML=s+"</ul>";
+        }
+
+        function wypiszC(tab) 
+        {
+            var ramka = document.getElementById('ramka');
+            var s = "<table><tr>";
+            for(let x in tab){
+                s += "<td>" + tab[x] + "</td>";
+            }
+            ramka.innerHTML=s+"</tr></table>";
+        }
+
+        function wypiszD(tab)
+        {
+            var ramka = document.getElementById('ramka');
+            var s = "<table>";
+            for(let x of tab){
+                s += "<tr><td>" + x + "</td></tr>";
+            }
+            ramka.innerHTML=s+"</table>";
+        }
+
+    </script>
+    
+</body>
+</html>

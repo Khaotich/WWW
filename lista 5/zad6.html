@@ -1,0 +1,177 @@
+<html>
+	<head>
+		<meta charset='utf-8'/>
+		<title>Zadanie 6</title>
+		<style>
+			canvas
+			{
+				margin-left: auto;
+    			margin-right: auto;
+				border: 2px solid black;
+				display: block;
+			}
+		</style>
+	</head>
+	<body onload="main()">
+
+		<canvas id="rys" height="600" width="600"></canvas>
+	
+		<script>
+
+			function main()
+			{
+				var c = document.getElementById("rys");
+				var ctx = c.getContext("2d");
+				ctx.fillStyle = "turquoise";
+				ctx.fillRect(0, 0, c.width, c.height);
+				
+				snowman(150,150,15);
+				snowman(450,450,25);
+				snowman(300,300,20);
+				tree(100,400,10);
+				tree(450,200,20);
+				house(150,500,20);
+				house(250,100,15);
+			}
+
+			function snowman(x,y,height)
+			{
+				var c = document.getElementById("rys");
+				var ctx = c.getContext("2d");
+				
+				//dół
+				ctx.beginPath();
+				ctx.strokeStyle = 'black';
+				ctx.fillStyle = 'white';
+  				ctx.arc(x, y, height*2.5, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+				  
+				//środek
+				ctx.beginPath();
+				ctx.strokeStyle = 'black';
+				ctx.fillStyle = 'white';
+  				ctx.arc(x, y-(height*2), height*2, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//góra
+				ctx.beginPath();
+				ctx.strokeStyle = 'black';
+				ctx.fillStyle = 'white';
+  				ctx.arc(x, y-(height*3.5), height*1.5, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//prawe oko
+				ctx.beginPath();
+				ctx.strokeStyle = 'black';
+				ctx.fillStyle = 'black';
+  				ctx.arc(x+height*0.6, y-(height*4), height*0.2, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//lewe oko
+				ctx.beginPath();
+				ctx.strokeStyle = 'black';
+				ctx.fillStyle = 'black';
+  				ctx.arc(x-height*0.6, y-(height*4), height*0.2, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//usta
+				ctx.beginPath();
+				ctx.strokeStyle = 'red';
+				ctx.fillStyle = 'red';
+  				ctx.arc(x, y-(height*3), height*0.8, 0, Math.PI);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+			}
+
+			function tree(x,y,height)
+			{
+				var c = document.getElementById("rys");
+				var ctx = c.getContext("2d");
+
+				//pień
+				ctx.beginPath();
+				ctx.strokeStyle = '#6b481d';
+				ctx.fillStyle = '#6b481d';
+  				ctx.rect(x, y, height*2, height*3);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//liście
+				ctx.beginPath();
+				ctx.fillStyle = 'green';
+    			ctx.moveTo(x-(height*3),y);
+    			ctx.lineTo(x+(height*5),y);
+    			ctx.lineTo(x+(height*0.8),y/2);
+    			ctx.lineTo(x-(height*3),y);
+				ctx.fill();
+				ctx.closePath();
+			}
+
+			function house(x,y,height)
+			{
+				var c = document.getElementById("rys");
+				var ctx = c.getContext("2d");
+				
+				//ściany
+				ctx.beginPath();
+				ctx.strokeStyle = 'yellow';
+				ctx.fillStyle = 'yellow';
+  				ctx.rect(x, y, height*6, height*4);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//okno
+				ctx.beginPath();
+				ctx.strokeStyle = 'blue';
+				ctx.fillStyle = 'blue';
+  				ctx.rect(x+(height*4), y+(height*0.7), height*1.5, height*1.5);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//drzwi
+				ctx.beginPath();
+				ctx.strokeStyle = 'brown';
+				ctx.fillStyle = 'brown';
+  				ctx.rect(x+height, y+(height*0.7), height*1.5, height*3);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//klamka
+				ctx.beginPath();
+				ctx.strokeStyle = 'black';
+				ctx.fillStyle = 'black';
+  				ctx.arc(x+(height*2.2), y+(height*2.2), height*0.2, 0, Math.PI * 2);
+				ctx.stroke();
+				ctx.fill();
+				ctx.closePath();
+
+				//dach
+				ctx.beginPath();
+				ctx.fillStyle = 'red';
+    			ctx.moveTo(x-(height*1.5),y);
+    			ctx.lineTo(x+(height*7.5),y);
+    			ctx.lineTo(x+(height*3),y-(height*4));
+    			ctx.lineTo(x-(height*1.5),y);
+				ctx.fill();
+				ctx.closePath();
+			}
+
+		</script>
+
+	</body>
+</html>

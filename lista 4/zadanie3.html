@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Zadanie 3</title> 
+    <style>
+      
+        p
+        {
+            display: none;
+        }
+
+        img
+        {
+            float: s;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <button onclick="poprzedni()"> << </button>
+    <button onclick="nastepny()"> >> </button>
+    <button onclick="start()"> START </button>
+    <button onclick="stop()"> STOP </button>
+    <br>
+    <br>
+    
+    <p>
+    JavaScript (w skrócie JS) – skryptowy język programowania, stworzony przez firmę Netscape, najczęściej stosowany na stronach internetowych. Twórcą JavaScriptu jest Brendan Eich. W połowie lat 90. XX wieku organizacja
+    ECMA wydała na podstawie JavaScriptu standard języka skryptowego o nazwie ECMAScript, aktualnie rozwijaniem tego standardu zajmuje się komisja TC39.
+    </p>
+
+    <p>
+    <img src="img/js.png" alt="js">
+    Najczęściej spotykanym zastosowaniem języka JavaScript są strony internetowe. Skrypty te służą najczęściej do zapewnienia interakcji poprzez reagowanie na zdarzenia, 
+    walidacji danych wprowadzanych w formularzach lub tworzenia złożonych efektów wizualnych. Skrypty JavaScriptu uruchamiane przez strony internetowe mają znacznie ograniczony dostęp do komputera użytkownika.
+    Po stronie serwera JavaScript może działać w postaci node.js lub Ringo. W języku JavaScript można także pisać pełnoprawne aplikacje. 
+    Fundacja Mozilla udostępnia środowisko złożone z technologii takich jak XUL, XBL, XPCOM oraz JSLib. Umożliwiają one tworzenie korzystających z zasobów systemowych aplikacji
+    o graficznym interfejsie użytkownika dopasowującym się do danej platformy. Przykładem aplikacji napisanych z użyciem JS i XUL może być klient IRC o nazwie ChatZilla, domyślnie dołączony do pakietu Mozilla.
+    Microsoft udostępnia biblioteki umożliwiające tworzenie aplikacji JScript jako część środowiska Windows Scripting Host. Ponadto JScript.NET jest jednym z podstawowych języków środowiska .NET. 
+    Istnieje także stworzone przez IBM środowisko SashXB dla systemu Linux, które umożliwia tworzenie w języku JavaScript aplikacji korzystających z GTK+, GNOME i OpenLDAP. Platforma Node.js umożliwia pisanie aplikacji wiersza poleceń oraz aplikacji serwerowych. Node.js używany jest także w środowisku Electron, który umożliwia pisanie aplikacji GUI.
+    Język JavaScript używany jest także na urządzeniach internetu rzeczy, robotów czy układów takich jak Arduino poprzez bibliotekę Johnny-Five[7].
+    </p>
+
+    <p>
+    W 1996 r. organizacja ECMA rozpoczęła pracę nad specyfikacją języka JavaScript pozbawioną odniesień na temat interpretującego kod środowiska. 
+    Język opisany w standardzie ECMA-262 został nazwany ECMAScript. Od tego momentu nazwa JavaScript oznacza jedynie jeden z nadzbiorów języka ECMAScript. 
+    Pierwsza wersja standardu była bliska JavaScriptowi w wersji 1.1. Trzecia jako pierwsza rozszerzyła istniejące implementacje. 
+    Wersja ES4 została całkowicie porzucona przez przeglądarki internetowe, korzystał z niej jedynie język ActionScript dla platformy Flash. 
+    Od wersji ES5 przeglądarki na bieżąco implementują funkcje dodawane do standardu, często także, gdy są jeszcze propozycjami.
+    </p>
+
+    <p>
+    Wszystkie implementacje JavaScriptu dostępne w przeglądarkach internetowych dostarczają obiektów reprezentujących drzewo dokumentu. Mogą także umożliwiać tworzenie ciasteczek, 
+    manipulowanie oknami przeglądarki, wyświetlanie prostych okien dialogowych, pobieranie informacji o przeglądarce, zarządzanie jej pluginami oraz arkuszami stylów. Reagują także na zdarzenia wywoływane w interfejsie.
+    Podczas manipulowania zawartością dokumentu problem stanowił brak jego ustandaryzowanego modelu. W czwartym pokoleniu przeglądarek dostęp do niektórych elementów dokumentu w Netscape możliwy był przy użyciu kolekcji document.layers, 
+    za to w Internet Explorerze – document.all. Organizacja W3C opracowała jednak jednolity obiektowy model obsługiwany przez wszystkie współczesne przeglądarki (w tym Operę od wersji 6, Konquerora od wersji 3 oraz Safari). Tablice all 
+    i layers zostały uznane za przestarzałe i wsparcie dla nich zostało praktycznie wycofane.
+    </p>
+
+    <p>
+    Przeglądarki oraz język JavaScript stały się platformą do obsługi innych języków. Istnieją kompilatory, które konwertują pliki innego języka na JavaScript. Z najbardziej znanych można wymienić:
+    CoffeeScript, 
+    Dart, 
+    TypeScript, 
+    ClojureScript, 
+    Istnieją także transpilatory nowszej wersji języka, na wersje starsze, które będą obsługiwane przez większą liczbę przeglądarek. Dzięki temu można korzystać z nowości, 
+    dodanych do języka zanim zostaną dodane przez przeglądarki. Przykładem takiego narzędzia jest Babel.
+    </p>
+
+    <script>
+        var i=0;  
+        var temp = 0;
+        var x;
+        document.getElementsByTagName('p')[0].style.display = 'inline';
+        
+        function nastepny()
+        {
+            i++;
+            if(i<document.querySelectorAll('p').length)
+            {
+                document.getElementsByTagName('p')[i-1].style = 'display: none;';
+                document.getElementsByTagName('p')[i].style = 'display: inline;';
+            }
+            else
+            {
+                i = 0;
+                document.getElementsByTagName('p')[document.querySelectorAll('p').length-1].style = 'display: none;';
+                document.getElementsByTagName('p')[i].style = 'display: inline;';
+            }
+        }
+
+        function poprzedni()
+        {
+            i--;
+            if(i<0)
+            {
+                i = document.querySelectorAll('p').length-1;
+                document.getElementsByTagName('p')[0].style = 'display: none;';
+                document.getElementsByTagName('p')[i].style = 'display: inline;';
+            }
+            else
+            {
+                document.getElementsByTagName('p')[i+1].style = 'display: none;';
+                document.getElementsByTagName('p')[i].style = 'display: inline;';
+            }
+        }
+
+        function start()
+        {
+            if(temp == 0)
+            {
+                x = setInterval(nastepny, 1000);
+                temp ++;
+            }
+            
+        }
+
+        function stop()
+        {
+            if(temp == 1)
+            {
+                temp--;
+                clearInterval(x);
+            }
+            
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 2</title>
+</head>
+<html>
+<body>
+    <div style="text-align:center"> 
+        <button onclick="playPause()">Play/Pause</button> 
+        <br><br>
+        <video id="video1" width="420">
+          <source src="video.mp4" type="video/mp4">
+        </video>
+      </div> 
+      
+      <script> 
+      var myVideo = document.getElementById("video1"); 
+      
+      function playPause() { 
+        if (myVideo.paused) 
+          myVideo.play(); 
+        else 
+          myVideo.pause();
+      }
+      </script> 
+</body>
+</html>

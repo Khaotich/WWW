@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 4</title>
+    <style>
+        img{
+            height: 100px;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+        
+        button{
+            position: absolute;
+        }
+
+        #lewy{
+            left: 0;
+            top: 49%;
+            bottom: 49%;
+            margin: auto;
+            margin-left: 5px;
+        }
+
+        #prawy{
+            right: 0;
+            top: 49%;
+            bottom: 49%;
+            margin: auto;
+            margin-right: 5px;
+        }
+
+        #gora{
+            right: 49%;
+            left: 49%;
+            top: 0;
+            margin: auto;
+            margin-top: 5px;
+        }
+
+        #dol{
+            right: 49%;
+            left: 49%;
+            bottom: 0;
+            margin: auto;
+            margin-bottom: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <img id="img" src="image.jpg">
+
+    <button onclick="lewo()" id="lewy">Lewo</button>
+    <button onclick="prawo()" id="prawy">Prawo</button>
+    <button onclick="gora()" id="gora">Góra</button>
+    <button onclick="dol()" id="dol">Dół</button>
+    
+    <script>
+        
+        var l = 0;
+        var p = 0;
+        var g = 0;
+        var d = 0;
+
+        function lewo(){
+            l+=10;
+            document.getElementById('img').style.right = l + 'px';
+        }
+
+        function prawo(){
+            p+=10;
+            document.getElementById('img').style.left = p + 'px';
+        }
+
+        function gora(){
+            g+=10;
+            document.getElementById('img').style.bottom = g + 'px';
+        }
+
+        function dol(){
+            d+=10;
+            document.getElementById('img').style.top = d + 'px';
+        }
+
+    </script>
+    
+</body>

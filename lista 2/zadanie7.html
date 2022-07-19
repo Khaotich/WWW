@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 7</title>
+</head>
+<body>
+    
+  <input onchange="document.body.innerHTML+='<br>'+this.value+'='+eval(this.value)">
+  <button onclick="location=location">Wyczysc</button>
+
+  <p>
+    Do znacznika input wpisywane są wartości, po czym wydażenie 'onchange' wykrywa
+    zmianę wartości i wykonuje się skrypt dopisujący do wewnętrznego html złamanie
+    lini, po czym dopisuje w lini nasze działanie wprowadzone do inputa, oraz znak =
+    a po nim wynik działania zwrócony z funkcji eval, która została wywołana z wartością 
+    inputa. Funkcja eval () oblicza lub wykonuje argument.
+  </p> 
+
+</body>
+</html>

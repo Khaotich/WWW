@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 1</title>
+    <style>
+        #ramka {
+            height: 500px;
+            width: 500px;
+            border: 1px solid grey;
+            margin: auto;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        b {
+            display: block;
+            height: 10px;
+            width: 10px;
+            border-radius: 5px;
+            position: absolute;
+        }
+
+        h1, div {
+            text-align: center;
+            margin: 10px;
+        }
+
+        .body
+        {
+            background: red;
+        }
+
+        .food
+        {
+            background: yellow;
+        }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div id="ramka"></div>
+
+    <center>
+        <button onclick="play()">Start</button>
+        <button onclick="reset()">Nowa Gra</button>
+        <br>
+        <div id="points">Punkty: 0</div>
+    </center>
+
+    <script>
+
+        var x = 200, y = 200, dx = 20, dy = 0;
+        var food = true;
+        var points = 0;
+        var time = 0;
+
+        function spawn()
+        {
+            for(i=0; i<10; i++) $('#ramka').append('<b class="body" id="' + i + '"></b>');
+        }
+
+        function move()
+        {
+            x += dx;
+            y += dy;
+
+            if ((x < 5 || x > 495 || y < 5 || y > 495))
+            {
+                clearInterval(game);
+                alert("Koniec gry! Twoje punkty: " + points);
+            }
+            
+            $('#ramka').append("<b class='body' style='left:" + x + "px; top:" + y + "px'></b>");
+            $('#ramka').find('.body').first().remove();
+
+            if(check_food()) spawn_food();
+            eat();
+            
+            time += 100;
+        }
+
+        function play()
+        {
+            spawn();
+            game = setInterval(move, 100);
+        }
+
+        $(document).keydown(function(event)
+        {
+            var a = event.keyCode;
+            if (a == 37) { dx = -20; dy = 0; } // strzałka w lewo
+            if (a == 38) { dx = 0; dy = -20; } // strzałka w góre
+            if (a == 39) { dx = 20; dy = 0; } // strzałka w prawo
+            if (a == 40) { dx = 0; dy = 20; } // strzałka w dół
+        });
+
+        function reset()
+        {
+            location.reload();
+        }
+
+        function spawn_food()
+        {
+            var table = [];
+            for(i=0; i<=480; i+=20) table.push(i);
+            var position_x = table[Math.floor(Math.random()*(table.length))];
+            var position_y = table[Math.floor(Math.random()*(table.length))];
+            
+            $('#ramka').append("<b class='food' style='left:" + position_x + "px; top:" + position_y + "px'></b>");
+        }
+
+        function check_food()
+        {
+            var r = $('.food').length;
+            if(r==0) return true;
+            else return false;
+        }
+
+        function eat()
+        {
+            var x_h = $('.body').last().css('left');
+            var y_h = $('.body').last().css('top');
+            var x_f = $('.food').first().css('left');
+            var y_f = $('.food').first().css('top');
+            
+            if(x_h == x_f && y_h == y_f)
+            {
+                $('.food').remove();
+                points++;
+                $('#points').text('Punkty: ' + points);
+            }
+
+        }
+
+        function body_crash()
+        {
+            var x_head = $('#9').css('left');
+            var y_head = $('#9').css('top');
+
+            for(i = 1; i < 10; i++)
+            {
+                x_r = $('#'+i).css('left');
+                y_r = $('#'+i).css('top');
+
+                if(x_head == x_r && y_head == y_r) return true;
+            }
+        }
+
+    </script>
+</body>
+</html>

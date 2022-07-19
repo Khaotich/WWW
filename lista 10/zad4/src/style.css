@@ -1,0 +1,132 @@
+body
+{
+    background: url('background.png');
+}
+
+a
+{
+    text-decoration: none;
+    color: black;
+}
+
+a:visited
+{
+    text-decoration: none;
+    color: black;
+}
+
+a:hover
+{
+    text-decoration: none;
+    color: black;
+}
+
+h1, h2
+{
+    text-decoration: underline;
+}
+
+table
+{
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+th,td
+{
+    border: 2px solid black;
+    padding: 8px;
+}
+
+.clear
+{
+    clear: both;
+}
+
+#container
+{
+    width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#topbar
+{
+    margin-left: 135px;
+    text-align: center;
+}
+
+#menu > ul
+{
+    list-style:none;
+}
+
+#menu > ul > a
+{
+    float: left;
+    width: 150px;
+    height: 20px;
+    border: 2px dotted red;
+    border-right: none;
+    padding: 5px;
+    font-size: 16px;
+}
+
+#menu > ul > a:last-child
+{
+    float: left;
+    border-right: 2px dotted red;
+}
+
+#menu > ul > a:hover
+{
+    cursor: pointer;
+    background-color: aqua;
+}
+
+#status
+{
+    float: left;
+    margin-top: 3px;
+    margin-left: 50px;
+}
+
+#content
+{
+    height: 600px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 16px;
+}
+
+#content > img
+{
+    width: 800px;
+}
+
+#footer
+{
+    margin-top: 70px;
+    text-align: center;
+}
+
+#footer > div
+{
+    float: left;
+    width: 30%;
+    margin-top: 8px;
+    font-size: 20px;
+}
+
+.button
+{
+    background-color: aqua;
+    text-decoration: underline;
+} 
+
+.day
+{
+    width: 150px;
+}

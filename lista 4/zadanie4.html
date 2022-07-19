@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Zadanie 4</title> 
+    <style>
+
+        input{width: 30px;}
+
+    </style>
+</head>
+<body>
+  
+    <table><tr><td rowspan=2 style='font-size:3em'>{</td>
+    <td><input>x+<input>y=<input></td></tr>
+    <tr><td><input>x+<input>y=<input></td></tr>
+    </table><button onclick='solve()''>Rozwiąż</button>
+    <div id='wynik'></div>
+
+    <script>
+
+        function solve()
+        {
+            var x1 = document.querySelectorAll('input')[0].value; 
+            var y1 = document.querySelectorAll('input')[1].value;
+            var r1 = document.querySelectorAll('input')[2].value;
+            var x2 = document.querySelectorAll('input')[3].value; 
+            var y2 = document.querySelectorAll('input')[4].value; 
+            var r2 = document.querySelectorAll('input')[5].value;
+            
+            var W_ = (x1*y2)-(y1*x2);
+            var Wx = (r1*y2)-(y1*r2);
+            var Wy = (x1*r2)-(x2*r1); 
+
+            var x = Wx/W_;
+            var y = Wy/W_;
+
+            if(W_!=0)
+            {
+                document.getElementById('wynik').innerHTML = '<p>x = ' + x + '</p>' + '<p>y = ' + y + '</p>';
+            }
+            else if(W_==0 && (Wx!=0 || Wy!=0))
+            {
+                document.getElementById('wynik').innerText = 'Brak rozwiązań';
+            }
+            else if(W_==0 && Wx==0 && Wy==0)
+            {
+                document.getElementById('wynik').innerText = 'Nieskończenie wiele rozwiązań';
+            }
+        }
+
+    </script>
+
+</body>
+</html>

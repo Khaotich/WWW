@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    
+    <meta charset="utf-8">
+    <title>Zadanie 14</title> 
+    <style>
+      
+      body {text-align:center}
+      img{
+        vertical-align:middle;
+        height: 400px;
+        }  
+    
+    </style>
+</head>
+<body>
+    
+  <button onclick="f(-1)"> << </button>
+  <img src="https://images.unsplash.com/photo-1547038577-da80abbc4f19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1251&q=80">
+  <button onclick="f(1)"> >> </button>
+  
+  <script>
+    
+    var adr = ["https://images.unsplash.com/photo-1547038577-da80abbc4f19?ixlib=rb-1.2.1&auto=format&fit=crop&w=1251&q=80",
+              "https://images.unsplash.com/photo-1552519507-88aa2dfa9fdb?ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80",
+              "https://images.unsplash.com/photo-1490641815614-b45106d6dd04?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+              "https://images.unsplash.com/photo-1550732520-59f139547c93?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+              "https://images.unsplash.com/photo-1542228262-3d663b306a53?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80",
+              "https://images.unsplash.com/photo-1551501438-e61a59a1fd75?ixlib=rb-1.2.1&auto=format&fit=crop&w=1401&q=80",
+              "https://images.unsplash.com/photo-1597404294360-feeeda04612e?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+              "https://images.unsplash.com/photo-1583062205555-7af8d8c41c83?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80",
+              "https://images.unsplash.com/photo-1599840688938-6758b38102c0?ixlib=rb-1.2.1&auto=format&fit=crop&w=1348&q=80",
+              "https://images.unsplash.com/photo-1579494195278-d6cf52218c3f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1392&q=80"];
+    
+    var img=document.getElementsByTagName("img")[0];
+    var i=0;
+    function f(x){
+      i=i+x;
+      if(i>-1 && i<adr.length)
+      {
+        img.src=adr[i];
+      }
+      else if(i<0)
+      {
+        i= adr.length-1;
+        img.src=adr[i];
+      }
+      else if(i==adr.length)
+      {
+        i=0;
+        img.src=adr[i];
+      }
+    }
+  </script>
+
+</body>
+</html>

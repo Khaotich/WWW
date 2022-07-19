@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>Zadanie 1 B</title>
+  <style>
+    .menu1 a {font-size: 20px}
+    .menu1 a {text-decoration:none;}
+    .menu1 a {font-family: arial;display:block;background:#eee;
+            padding:4px 20px;margin:2px;}
+    .menu1 li li a {color:black}
+    .menu1  li:hover> a {background:#aaa;}
+    .menu1 > li {display:table-cell; padding:0; border:1px solid grey}
+    .menu1 >li >a {background:#678; color:white;margin:2px;}
+    .menu1 >li:hover >a {background:#456; }
+    .menu1 ul {list-style-type:none} 
+    .menu1 ul {padding:0} 
+    .menu1 li ul {position:absolute;border:1px solid grey;background:#eee}
+    .menu1 li ul {display:none}
+    .menu1 li:hover ul {display:block}
+    .menu1 >li {display:table-cell;padding:0;border:none}
+    .menu1 {position: fixed; left: 0; top: 0;}
+    p:nth-of-type(1) {margin-top: 100px;}
+  </style>
+</head>
+<html>
+<body>
+  <div>
+    <ul class="menu1">
+        <li><a href=#>Języki programowania</a>
+          <ul>
+            <li><a href=#cpp>C++</a></li>
+            <li><a href=#csharp>C#</a></li>
+            <li><a href=#python>Python</a></li>
+          </ul>
+        </li>
+        <li><a href=#>Figury</a>
+          <ul>
+            <li><a href=#kwadrat>Kwadrat</a></li>
+            <li><a href=#kolo>Koło</a></li>
+            <li><a href=#trojkat>Trójkąt</a></li>
+          </ul>
+        </li>
+        <li><a href=#>Miasta</a>
+          <ul>
+            <li><a href=#wroclaw>Wrocław</a></li>
+            <li><a href=#krakow>Kraków</a></li>
+            <li><a href=#poznan>Poznań</a></li>
+          </ul>
+        </li>
+        <li><a href=#>Ryby</a>
+          <ul>
+            <li><a href=#dorsz>Dorsz</a></li>
+            <li><a href=#sledz>Śledź</a></li>
+            <li><a href=#sum>Sum</a></li>
+          </ul>
+        </li>
+    </ul>
+    
+    <p id="cpp">
+      C++ – język programowania ogólnego przeznaczenia.
+      Umożliwia abstrakcję danych oraz stosowanie kilku paradygmatów programowania: proceduralnego, obiektowego i generycznego. Charakteryzuje się wysoką wydajnością kodu wynikowego, bezpośrednim dostępem do zasobów sprzętowych i funkcji systemowych, łatwością tworzenia i korzystania z bibliotek (napisanych w C++, C lub innych językach), niezależnością od konkretnej platformy sprzętowej lub systemowej (co gwarantuje wysoką przenośność kodów źródłowych) oraz niewielkim środowiskiem uruchomieniowym. Podstawowym obszarem jego zastosowań są aplikacje i systemy operacyjne.
+      C++ został zaprojektowany przez Bjarne Stroustrupa jako rozszerzenie języka C o obiektowe mechanizmy abstrakcji danych i silną statyczną kontrolę typów. Zachowanie zgodności z językiem C na poziomie kodu źródłowego pozostaje jednym z podstawowych celów projektowych kolejnych standardów języka.
+    </p>
+
+    <p id="csharp">
+      C# wieloparadygmatowy język programowania zaprojektowany w latach 1998-2001 przez zespół pod kierunkiem Andersa Hejlsberga dla firmy Microsoft.
+      Program napisany w tym języku kompilowany jest do języka Common Intermediate Language (CIL), specjalnego kodu pośredniego wykonywanego w środowisku uruchomieniowym takim jak .NET Framework, .NET Core, Mono lub DotGNU. Wykonanie skompilowanego programu przez system operacyjny bez takiego środowiska nie jest możliwe.
+    </p>
+
+    <p id="python">
+      Python – język programowania wysokiego poziomu ogólnego przeznaczenia[4], o rozbudowanym pakiecie bibliotek standardowych[5], którego ideą przewodnią jest czytelność i klarowność kodu źródłowego. Jego składnia cechuje się przejrzystością i zwięzłością[6][7].
+      Python wspiera różne paradygmaty programowania: obiektowy, imperatywny oraz w mniejszym stopniu funkcyjny. Posiada w pełni dynamiczny system typów i automatyczne zarządzanie pamięcią, będąc w tym podobnym do języków Perl, Ruby, Scheme czy Tcl. Podobnie jak inne języki dynamiczne jest często używany jako język skryptowy. Interpretery Pythona są dostępne na wiele systemów operacyjnych.
+      Python rozwijany jest jako projekt Open Source zarządzany przez Python Software Foundation, która jest organizacją non-profit. Standardową implementacją języka jest CPython (napisany w C), ale istnieją też inne, np. Jython (napisany w Javie), CLPython napisany w Common Lisp, IronPython (na platformę .NET) i PyPy (napisany w Pythonie, zob. bootstrap).
+    </p>
+
+    <p id="kwadrat">
+      Kwadrat (łac. quadratum „czworobok, kwadrat”) – wielokąt foremny o czterech bokach (czworokąt foremny), czyli czworobok o czterech przystających bokach (a stąd równej długości) i tyluż przystających kątach wewnętrznych (a stąd prostych). Można go również scharakteryzować jako prostokąt o przystających bokach (bądź równej długości, bądź też prostokąt równoboczny), romb o przystających (bądź prostych) kątach wewnętrznych. Dowolne dwa kwadraty są podobne.
+      Kwadraty są ścianami sześcianu oraz niektórych wielościanów półforemnych, m.in. ośmiościanu ściętego.
+    </p>
+
+    <p id="kolo">
+      Koło to zbiór wszystkich punktów płaszczyzny euklidesowej odległych od ustalonego punktu, nazywanego środkiem, o zadaną odległość, nazywaną promieniem.
+      Jest to szczególny przypadek elipsy o równych półosiach, jest to także 1-wymiarowa hipersfera.
+      Okrąg jest brzegiem pewnego koła.
+    </p>
+
+    <p id="trojkat">
+      Trójkąt – wielokąt o trzech bokach[1]. Trójkąt to najmniejsza (w sensie inkluzji) figura wypukła i domknięta, zawierająca pewne trzy ustalone i niewspółliniowe punkty płaszczyzny (otoczka wypukła wspomnianych trzech punktów).
+      Odcinki tworzące łamaną nazywamy bokami, punkty wspólne sąsiednich boków nazywamy wierzchołkami trójkąta[1]. Każdy trójkąt jest jednoznacznie wyznaczony przez swoje wierzchołki.   
+      Często dla wygody jeden z boków trójkąta nazywa się podstawą, a pozostałe – ramionami[1].
+      W każdym trójkącie suma miar kątów wewnętrznych między bokami wynosi 180°[1], zaś długości boków muszą spełniać pewne zależności
+    </p>
+
+    <p id="wroclaw">
+      Wrocław -  miasto na prawach powiatu w południowo-zachodniej Polsce, siedziba władz województwa dolnośląskiego i powiatu wrocławskiego. Położone w Europie Środkowej, na Nizinie Śląskiej, nad Odrą i czterema jej dopływami. Jest historyczną stolicą Dolnego Śląska, a także całego Śląska.
+      Jest głównym miastem aglomeracji wrocławskiej, a także największym miastem leżącym na Ziemiach Odzyskanych. Czwarte pod względem liczby ludności miasto w Polsce – oficjalnie 643 782 mieszkańców[5], piąte pod względem powierzchni – 292,82 km². Z wyliczeń MPWiK i policji wynika, że rzeczywista liczba ludności Wrocławia wynosi od 825 tysięcy do 1 miliona osób[6]. Wrocław jest centrum rosnącej aglomeracji wrocławskiej, którą zamieszkuje szacunkowo 1,25 mln osób.
+      Miasto było stolicą księstwa wrocławskiego, siedzibą władz pruskiej prowincji Śląsk i rejencji wrocławskiej. Od 28 czerwca 1946 stolica województwa wrocławskiego. Od 1 stycznia 1999 stolica województwa dolnośląskiego, należy do Unii Metropolii Polskich i Eurocities.
+      W rankingu opublikowanym przez Globalization and World Cities Research Network, Wrocław został sklasyfikowany w IX kategorii (Gamma) miast o znaczeniu globalnym[7]. Jest to drugi najlepszy wynik w Polsce (za Warszawą).
+      Wrocław został sklasyfikowany w pierwszej setce miast świata w rankingu firmy doradczej Mercer „Najlepsze miasta do życia” w 2015[8], 2016[9], 2017[10] i 2019[11], a także w pierwszej setce najbardziej inteligentnych miast na świecie (smart city) w raporcie IESE Cities in Motion Index w 2017[12] i 2019[13]. W roku 2016 był Europejską Stolicą Kultury, a od roku 2019 jest Miastem Literatury UNESCO.
+    </p>
+
+    <p id="krakow">
+      Kraków – miasto na prawach powiatu położone w południowej Polsce nad Wisłą, drugie co do liczby mieszkańców[1][5] i powierzchni miasto kraju[1], formalna stolica Polski do 1795 r. i miasto koronacyjne oraz nekropolia królów Polski, od 1000 r. nieprzerwanie stolica diecezji krakowskiej (jednej z pięciu w ówczesnej Polsce), a od 1925 archidiecezji i metropolii. Kraków uzyskał lokację miejską przed 1228 rokiem, ponowna lokacja Krakowa w 1257 r.[6], od odzyskania niepodległości w 1918 r. miasto wojewódzkie (od 1998 r. siedziba władz województwa małopolskiego), jest także centralnym ośrodkiem metropolitalnym aglomeracji krakowskiej i Krakowskiego Obszaru Metropolitalnego. Kraków uznawany jest za stolicę historycznej Małopolski. Leży na obszarze Bramy Krakowskiej, Niecki Nidziańskiej i Pogórza Zachodniobeskidzkiego.
+      W Krakowie znajdują się główne siedziby m.in.: Polskiej Akademii Umiejętności, Narodowego Centrum Nauki, Instytutu Nafty i Gazu – Państwowego Instytutu Badawczego, Instytutu Zootechniki – Państwowego Instytutu Badawczego, Krajowej Szkoły Sądownictwa i Prokuratury[7], dowództwa Sił Specjalnych RP będącego jednocześnie jednym z kilku dowództw sił specjalnych NATO[8][9], Centrum Operacji Lądowych – Dowództwa Komponentu Lądowego[10], Polskiego Związku Narciarskiego[11], Operacyjno-Strategiczne Dowództwo Unii Europejskiej[12], Centrum Eksperckiego Kontrwywiadu NATO[13], Narodowe Centrum Radioterapii Hadronowej[14], Centralnego Ośrodka Turystyki Górskiej.[15]
+      W mieście działają placówki kulturalne o znaczeniu i statusie narodowym, m.in. Narodowy Stary Teatr, Muzeum Narodowe, Panteon Narodowy[16], Archiwum Narodowe[17], Biblioteka Jagiellońska, Instytut Książki[18], Instytut Literatury[19], Centrum Operacji Specjalnych[20], Narodowe Centrum Rugby[21].
+      Miasto na prawach powiatu pełni funkcję centrum administracyjnego, kulturalnego, edukacyjnego, naukowego, gospodarczego, usługowego i turystycznego. Kraków jest drugim co do wielkości, po Warszawie, rynkiem nowoczesnej powierzchni biurowej[22] (ponad milion metrów kwadratowych powierzchni biurowej)[23], a także jednym z kluczowych węzłów kolejowych w Polsce.
+    </p>
+
+    <p id="poznan">
+      Poznań - miasto na prawach powiatu w zachodniej Polsce, położone na Pojezierzu Wielkopolskim, nad rzeką Wartą, u ujścia Cybiny. Historyczna stolica Wielkopolski, od 1999 r. siedziba władz województwa wielkopolskiego i powiatu poznańskiego.
+      Piąte pod względem liczby ludności miasto w Polsce (536 438 mieszkańców) i szóste pod względem powierzchni (262 km²)[5]. Poznań wraz z powiatem poznańskim i gminami Oborniki, Skoki, Szamotuły i Śrem tworzy aglomerację poznańską, zamieszkałą przez ponad 1,2 mln osób[6][7]. W 2018 think tank Globalization and World Cities (GaWC), badający wzajemne stosunki pomiędzy miastami świata w kontekście globalizacji, uznał Poznań za metropolię globalną (Gamma-)[8]. Poznań często plasuje się w czołówce miast o bardzo wysokiej jakości edukacji i bardzo wysokim standardzie życia[9]. Zajmuje również wysokie miejsce pod względem bezpieczeństwa i jakości opieki zdrowotnej[10]. Miasto Poznań wielokrotnie zdobyło także nagrodę „Superbrands” za markę miasta bardzo wysokiej jakości[11].
+      Miasto jest istotnym węzłem drogowym i kolejowym, funkcjonuje tu również międzynarodowy port lotniczy Poznań-Ławica. Poznań jest ośrodkiem przemysłu, handlu, logistyki i turystyki. Funkcjonują tu Międzynarodowe Targi Poznańskie – największe i najstarsze centrum wystawiennicze w Polsce[12]. Poznań to ośrodek akademicki, naukowy i kulturalny. W 25 szkołach wyższych studiuje ponad 110 tys. osób[13][14]. Działają tu m.in.: opera, filharmonia, balet, teatry, kina, muzea, galerie sztuki, orkiestry i zespoły folklorystyczne[15]. Poznań jest siedzibą m.in.: Chóru Stuligrosza, Instytutu Zachodniego oraz najwyższego taktycznego dowództwa US Army w Europie[16]. W podpoznańskim obserwatorium astrogeodynamicznym, jako jedynym w Polsce, współtworzy się europejski system lokalizacyjny Galileo[17].
+      Poznań był jednym z ośrodków stołecznych i religijnych państwa Piastów w X i XI wieku, w przeszłości pełnił funkcję siedziby władców Polski[18]. Poznań był też stolicą Polski w latach 1290–1296[19]. Jest jednym z najstarszych lokowanych miast w Polsce – nadanie praw miejskich w 1253 r. Miasto posiadało prawo do czynnego uczestnictwa w akcie wyboru króla[20]. W poznańskiej katedrze znajduje się symboliczny grobowiec pierwszych władców Polski – Mieszka I oraz Bolesława I Chrobrego. Na wyspie Ostrów Tumski mieści się siedziba kurii archidiecezji poznańskiej – najstarszej w Polsce[21]. Stolica Wielkopolski była jednym z miast królewskich Korony Królestwa Polskiego. Miejsce obrad sejmików elekcyjnych województwa poznańskiego od XVI wieku do pierwszej połowy XVIII wieku[22]. Pod Poznaniem miały miejsce popisy szlachty województwa poznańskiego I Rzeczypospolitej[23]. W 2008 r. zespół najstarszych dzielnic miasta uznano za pomnik historii[24].
+      Z Poznaniem związanych jest 5 powstań wielkopolskich: z 1794 r., z 1806 r., z 1846 r., z 1848 r. oraz z lat 1918–1919. Dwa z nich (z 1806 r. i z lat 1918-1919) zakończyły się pełnym zwycięstwem Polaków i są zaliczane obok powstania sejneńskiego z 1919 r. oraz dwóch powstań śląskich z 1920 r. i z 1921 r. do pięciu zwycięskich powstań narodowych w historii Polski. Zwycięstwo z 1806 r. miało bezpośredni wpływ na powstanie Księstwa Warszawskiego, natomiast o okresie pomiędzy zwycięskimi powstaniami wielkopolskimi opowiada serial: Najdłuższa wojna nowoczesnej Europy[25].
+      14 Wielkopolska Dywizja Piechoty z Poznania za walkę w wojnie polsko-bolszewickiej otrzymała order Virtuti Militari[26]. Dzięki pracom poznańskich kryptologów rozpracowano szyfr niemieckiej maszyny szyfrującej Enigma[27]. W Poznaniu miało też miejsce pierwsze i jedyne powstanie[28] okresu PRL (Poznański Czerwiec 1956), który był główną przyczyną Powstania węgierskiego 1956.
+      Poznań jest jedynym miastem wymienionym w słowach polskiego hymnu. Patronami miasta Poznania są apostołowie Piotr i Paweł, święci Kościoła katolickiego. Święto miasta, jako dzień jego patronów, obchodzone jest 29 czerwca[29].
+    </p>
+
+    <p id="dorsz">
+      Dorsz - drapieżna ryba morska, największy z przedstawicieli rodziny dorszowatych; gatunek wędrowny występujący w północnej części Oceanu Atlantyckiego i w morzach północnej Europy.
+      W Polsce mianem dorsza określa się zwykle trzy podgatunki dorsza atlantyckiego, z których najbardziej znanym jest dorsz bałtycki[3] (G. morhua callarias) nazywany także pomuchlą[4]. Spokrewnione z dorszem atlantyckim są: dorsz pacyficzny (G. macrocephalus), ogak (G. ogac), jak i dorsze arktyczne z rodzaju Arctogadus.
+      Jako łatwo dostępna i pożywna ryba łowna dorsz miał duże znaczenie w rozwoju cywilizacji wybrzeży północnego Atlantyku, będąc „chlebem powszednim” wielu społeczeństw. Dla przemysłu rybnego wielu krajów ciągle jest jedną z najważniejszych poławianych ryb. W konkurencji o jego malejące zasoby dochodziło do międzynarodowych konfliktów. Dziś dorsz stał się symbolem niezrównoważonego rybołówstwa – ze względu na przełowienie, szczególnie populacji w zachodnim Atlantyku oraz w Morzu Północnym i Bałtyku, ten jeszcze niedawno powszechny gatunek jest narażony na wyginięcie. W Polsce jego połowy i zarządzanie są głównym problemem rybołówstwa i ważnym tematem politycznym.
+    </p>
+
+    <p id="sledz">
+      Śledź - gatunek ławicowej ryby morskiej z rodziny śledziowatych.
+      Blisko spokrewniony ze śledziem pacyficznym. Obydwa gatunki – powszechnie określane nazwą śledź – miały olbrzymie znaczenie gospodarcze stanowiąc główny cel połowów w rybołówstwie morskim. W wyniku przełowienia w latach 90. XX wieku liczebność poszczególnych populacji znacznie się zmniejszyła, jednak nadal śledzie są bardzo ważnymi rybami użytkowymi.
+    </p>
+
+    <p id="sum">
+      Sum - Druga co do wielkości (po biełudze) ryba Europy i największa europejska ryba słodkowodna. Osiąga długość 3 m i masę ciała ponad 100 kg (maksymalnie 5 m i wagę 306 kg)[7]. Ciało długie pozbawione łusek, głowa duża, otwór gębowy jest duży, silnie uzębiony. Nad górną szczęką znajdują się dwa długie, a pod dolną cztery krótkie wąsy. Płetwa grzbietowa jest silnie zredukowana, posiada tylko 3-5 promieni, natomiast płetwa odbytowa jest bardzo długa i sięga prawie do zaokrąglonej płetwy ogonowej. Ogon bardzo długi, stanowi 3/5 długości ciała. Oczy małe, nozdrza zakończone krótkimi mięsistymi rurkami.
+      Ubarwienie zależy od środowiska. Grzbiet jest ciemny lub prawie czarny, czasem z zielonkawym, niebieskawym lub brązowawym odcieniem. Boki ciemnożółtawobiałe z wyraźnym szarobrązowym marmurkowym wzorem, brzuch szarobiały z ciemnymi nieregularnymi plamami. Czasami występują czerwonookie osobniki albinotyczne.
+    </p>
+
+  </div>
+
+</body>
+</html>
